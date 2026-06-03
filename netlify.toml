@@ -103,6 +103,37 @@
   to = "/newsletter.html"
   status = 200
 
+# Get Involved: parent landing page linking to Membership, Chapters,
+# Newsletter, and Donate. Membership and Chapters are V1 intent-capture
+# (Netlify Forms) with V2 roadmap visible on the pages.
+[[redirects]]
+  from = "/get-involved"
+  to = "/get-involved.html"
+  status = 200
+
+[[redirects]]
+  from = "/membership"
+  to = "/membership.html"
+  status = 200
+
+[[redirects]]
+  from = "/chapters"
+  to = "/chapters.html"
+  status = 200
+
+# Thank-you pages for Netlify Form submissions (membership + chapter
+# inquiries). Default Netlify form-success route is /<form-action>/; we
+# use friendly slugs so the address bar shows what the visitor just did.
+[[redirects]]
+  from = "/membership-thanks"
+  to = "/membership-thanks.html"
+  status = 200
+
+[[redirects]]
+  from = "/chapters-thanks"
+  to = "/chapters-thanks.html"
+  status = 200
+
 # Admin console. Lightly protected (function-level basic auth on writes;
 # the page itself is publicly viewable but no action works without auth).
 [[redirects]]
