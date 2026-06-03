@@ -72,6 +72,7 @@ function renderPiece(piece) {
         <a href="/outreach">Outreach</a>
         <a href="/archive">Archive</a>
         <a href="/board">Board</a>
+        <a href="/partners">Partners</a>
         <a href="/packages">Packages</a>
         <a href="/donate" class="nav-donate">Donate</a>
       </nav>

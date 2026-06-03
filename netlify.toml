@@ -165,6 +165,19 @@
   to = "/packages.html"
   status = 200
 
+# Partners surface: list page + per-partner sub-pages
+# (Flame of Hope is the first sub-page; 21st Century Girls + International
+# Peace Museum profiles follow as Terry sends materials.)
+[[redirects]]
+  from = "/partners"
+  to = "/partners.html"
+  status = 200
+
+[[redirects]]
+  from = "/partners/:slug"
+  to = "/partners/:slug.html"
+  status = 200
+
 [[redirects]]
   from = "/contact"
   to = "/contact.html"
