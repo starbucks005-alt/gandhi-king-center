@@ -1,0 +1,10 @@
+{
+  "name": "gandhi-king-center",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gandhi-King Center for Nonviolence (Dayton, OH). A 501(c)(3) private foundation. EIN 99-3986935.",
+  "scripts": {
+    "dev": "echo 'Use: netlify dev'  (or open index.html locally)"
+  },
+  "dependencies": {}
+}

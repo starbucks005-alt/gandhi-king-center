@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &middot; Gandhi-King Center for Nonviolence</title>
+  <meta name="description" content="Contact the Gandhi-King Center for Nonviolence. Admin@gandhi-king-center-for-nonviolence.org. 109 North Main Street, Suite 1206, Dayton, OH 45402-1294.">
+  <link rel="canonical" href="https://www.gandhi-king-center-for-nonviolence.org/contact">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="/">
+        <span class="site-logo__mark">Gandhi-King Center</span>
+        <span class="site-logo__tag">For Nonviolence</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/season">Season</a>
+        <a href="/education">Education</a>
+        <a href="/advocacy">Advocacy</a>
+        <a href="/community-building">Community</a>
+        <a href="/outreach">Outreach</a>
+        <a href="/archive">Archive</a>
+        <a href="/board">Board</a>
+        <a href="/donate" class="nav-donate">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1 class="hero__title">Get in touch.</h1>
+      <p class="hero__sub">For inquiries about hosting an event, joining a Season for Nonviolence kickoff, partnering with the center, or borrowing items from the archive, write to us.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:50px;max-width:960px;margin:0 auto;">
+        <div>
+          <h2 style="margin-bottom:18px;">Reach us</h2>
+          <p style="margin-bottom:8px;"><strong>Email</strong><br><a href="mailto:Admin@gandhi-king-center-for-nonviolence.org">Admin@gandhi-king-center-for-nonviolence.org</a></p>
+          <p style="margin-top:18px;"><strong>Mail</strong><br>Gandhi-King Center for Nonviolence<br>109 North Main Street, Suite 1206<br>Dayton, OH 45402-1294</p>
+          <p style="margin-top:18px;color:var(--ink-soft);font-size:0.9rem;">For archive loans or film screenings, please use the <a href="/archive#lending">lending request form</a>.</p>
+        </div>
+
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="lend-form" style="margin:0;">
+          <input type="hidden" name="form-name" value="contact">
+          <p hidden>
+            <label>Do not fill this out if you are human: <input name="bot-field"></label>
+          </p>
+
+          <div class="lend-form__row">
+            <div>
+              <label for="c-name">Your name</label>
+              <input id="c-name" type="text" name="name" required>
+            </div>
+            <div>
+              <label for="c-email">Email</label>
+              <input id="c-email" type="email" name="email" required>
+            </div>
+          </div>
+
+          <label for="c-org">Organization (optional)</label>
+          <input id="c-org" type="text" name="organization">
+
+          <label for="c-subject">Subject</label>
+          <select id="c-subject" name="subject" required>
+            <option value="">Select one</option>
+            <option value="general">General inquiry</option>
+            <option value="speaking">Invite a board member to speak</option>
+            <option value="kickoff">Host a Season for Nonviolence kickoff</option>
+            <option value="partnership">Partnership / Peace Partner</option>
+            <option value="press">Press inquiry</option>
+            <option value="donor">Donor / planned giving</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label for="c-message">Message</label>
+          <textarea id="c-message" name="message" required></textarea>
+
+          <button type="submit" class="btn btn--primary">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <h4>Gandhi-King Center for Nonviolence</h4>
+          <p>A 501(c)(3) private foundation carrying forward the philosophies and lives of Mahatma Gandhi and Dr. Martin Luther King Jr.</p>
+          <p>EIN 99-3986935</p>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <ul>
+            <li><a href="/season">The Season</a></li>
+            <li><a href="/board">The Board</a></li>
+            <li><a href="/archive">The Archive</a></li>
+            <li><a href="/education">Education</a></li>
+            <li><a href="/advocacy">Advocacy</a></li>
+            <li><a href="/community-building">Community Building</a></li>
+            <li><a href="/outreach">Outreach</a></li>
+            <li><a href="/donate">Donate</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>Admin@gandhi-king-center-for-nonviolence.org</p>
+          <p>109 North Main Street, Suite 1206<br>Dayton, OH 45402-1294</p>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>&copy; <span id="year">2026</span> Gandhi-King Center for Nonviolence. All rights reserved.</span>
+        <span><a href="/privacy">Privacy Policy</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>

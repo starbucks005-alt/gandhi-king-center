@@ -1,0 +1,97 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Pretty URLs: /board instead of /board.html
+[[redirects]]
+  from = "/board"
+  to = "/board.html"
+  status = 200
+
+[[redirects]]
+  from = "/donate"
+  to = "/donate.html"
+  status = 200
+
+[[redirects]]
+  from = "/education"
+  to = "/education.html"
+  status = 200
+
+[[redirects]]
+  from = "/advocacy"
+  to = "/advocacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/community-building"
+  to = "/community-building.html"
+  status = 200
+
+[[redirects]]
+  from = "/outreach"
+  to = "/outreach.html"
+  status = 200
+
+[[redirects]]
+  from = "/events"
+  to = "/events.html"
+  status = 200
+
+[[redirects]]
+  from = "/archive"
+  to = "/archive.html"
+  status = 200
+
+[[redirects]]
+  from = "/the-kings-in-india"
+  to = "/the-kings-in-india.html"
+  status = 200
+
+[[redirects]]
+  from = "/peace-partners"
+  to = "/peace-partners.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/season"
+  to = "/season-for-nonviolence.html"
+  status = 200
+
+# Catch unknown URLs into the 404 page (keeps the chrome consistent).
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# Security + caching headers per Greylander pattern.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Static assets cached aggressively; HTML stays no-cache so updates land.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"
