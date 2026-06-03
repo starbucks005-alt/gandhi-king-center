@@ -93,8 +93,52 @@
         <div class="admin-result" id="sneha-result"></div>
       </div>
 
-      <!-- More staff tools will be added below as they wire up. -->
-      <p style="margin-top:40px;color:var(--ink-muted);font-style:italic;font-size:0.92rem;">Ayanna Cole's communications generator (social posts, press releases, donor copy) will appear here next.</p>
+      <!-- ─── Ayanna: SM generator ─── -->
+      <div class="admin-card">
+        <h2>Brief Ayanna Cole</h2>
+        <p class="admin-card__sub">Director of Communications. Drafts ready-to-post social media copy in her voice for X, LinkedIn, Instagram, and Facebook. Copy-paste the output into the actual platforms.</p>
+
+        <label for="ayanna-brief" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:block;margin-bottom:6px;">Brief (what to post about)</label>
+        <textarea id="ayanna-brief" placeholder="One or two sentences on the topic. Examples: 'Season for Nonviolence 2027 kickoff hosting open — apply by Sep 1' or 'Tushar Gandhi speaks at Wright State Apr 14 — open to public, free' or 'Peace Camp 2026 registration now open at the Peace Museum.'" style="min-height:100px;"></textarea>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div>
+            <label for="ayanna-audience" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:block;margin-bottom:6px;">Audience (optional)</label>
+            <input id="ayanna-audience" type="text" placeholder="donors, educators, faith communities, press, general public">
+          </div>
+          <div>
+            <label for="ayanna-cta" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:block;margin-bottom:6px;">Call to action (optional)</label>
+            <input id="ayanna-cta" type="text" placeholder="Register, RSVP, Donate, Read more, Share">
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div>
+            <label for="ayanna-tone" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:block;margin-bottom:6px;">Tone</label>
+            <select id="ayanna-tone" style="width:100%;font-family:'Crimson Pro',serif;font-size:1rem;padding:10px 12px;border:1px solid var(--rule);background:#fff;color:var(--ink);margin-bottom:14px;">
+              <option value="announcement">Announcement</option>
+              <option value="reflective">Reflective</option>
+              <option value="celebratory">Celebratory</option>
+              <option value="urgent">Urgent</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:block;margin-bottom:6px;">Platforms</label>
+            <div style="padding:10px 12px;border:1px solid var(--rule);background:#fff;font-family:'Crimson Pro',serif;font-size:0.95rem;">
+              <label style="margin-right:14px;display:inline-block;"><input type="checkbox" class="ayanna-platform" value="x" checked> X</label>
+              <label style="margin-right:14px;display:inline-block;"><input type="checkbox" class="ayanna-platform" value="linkedin" checked> LinkedIn</label>
+              <label style="margin-right:14px;display:inline-block;"><input type="checkbox" class="ayanna-platform" value="instagram" checked> Instagram</label>
+              <label style="display:inline-block;"><input type="checkbox" class="ayanna-platform" value="facebook" checked> Facebook</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card__row">
+          <button type="button" id="ayanna-run" class="btn btn--primary">Generate posts &rarr;</button>
+          <span class="admin-status" id="ayanna-status"></span>
+        </div>
+        <div class="admin-result" id="ayanna-result"></div>
+      </div>
 
     </div>
   </section>
@@ -160,6 +204,102 @@
       }).catch(function(err) {
         snehaBtn.disabled = false;
         setStatus(snehaStatus, err.message || 'network error', 'error');
+      });
+    });
+
+    // ─── Ayanna: generate social media posts ───
+    var ayannaBtn      = document.getElementById('ayanna-run');
+    var ayannaStatus   = document.getElementById('ayanna-status');
+    var ayannaResult   = document.getElementById('ayanna-result');
+    var ayannaBrief    = document.getElementById('ayanna-brief');
+    var ayannaAudience = document.getElementById('ayanna-audience');
+    var ayannaCta      = document.getElementById('ayanna-cta');
+    var ayannaTone     = document.getElementById('ayanna-tone');
+
+    function copyToClipboard(text, btnEl) {
+      navigator.clipboard.writeText(text).then(function() {
+        var orig = btnEl.textContent;
+        btnEl.textContent = 'Copied';
+        setTimeout(function() { btnEl.textContent = orig; }, 1400);
+      }).catch(function() {
+        alert('Could not copy. Select and copy manually:\n\n' + text);
+      });
+    }
+
+    function renderPost(platform, data) {
+      var hashtags = (data.hashtags || []).map(function(t) { return '#' + t; }).join(' ');
+      var charCount = data.character_count + ' / ' + data.limit;
+      var charColor = data.over_limit ? '#b14025' : 'var(--ink-muted)';
+      var label = { x: 'X (Twitter)', linkedin: 'LinkedIn', instagram: 'Instagram', facebook: 'Facebook' }[platform] || platform;
+      var card = document.createElement('div');
+      card.style.cssText = 'background:#fff;border:1px solid var(--rule);padding:18px 20px;margin-top:14px;';
+      card.innerHTML = ''
+        + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px;flex-wrap:wrap;">'
+        + '  <strong style="font-family:\'Inter\',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-deep);">' + label + '</strong>'
+        + '  <span style="font-family:\'Inter\',sans-serif;font-size:11px;color:' + charColor + ';">' + charCount + (data.over_limit ? ' (over limit)' : '') + '</span>'
+        + '</div>'
+        + '<div style="white-space:pre-wrap;font-family:\'Crimson Pro\',serif;font-size:0.96rem;line-height:1.55;color:var(--ink);margin-bottom:10px;" data-copy></div>'
+        + (platform === 'x' ? '' : (hashtags ? '<div style="font-family:\'Inter\',sans-serif;font-size:0.85rem;color:var(--ink-soft);margin-bottom:10px;">' + hashtags + '</div>' : ''))
+        + '<button type="button" class="btn btn--ghost" style="font-size:11px;padding:8px 16px;" data-copy-btn>Copy post</button>';
+      // Set the copy text without HTML injection (use textContent)
+      card.querySelector('[data-copy]').textContent = data.copy;
+      var copyText = data.copy + (platform !== 'x' && hashtags ? '\n\n' + hashtags : '');
+      card.querySelector('[data-copy-btn]').addEventListener('click', function() {
+        copyToClipboard(copyText, this);
+      });
+      return card;
+    }
+
+    ayannaBtn.addEventListener('click', function() {
+      var brief = (ayannaBrief.value || '').trim();
+      if (brief.length < 5) {
+        alert('Brief is too short. Write a sentence or two on what to post about.');
+        return;
+      }
+      var platforms = Array.prototype.slice.call(document.querySelectorAll('.ayanna-platform:checked')).map(function(el) { return el.value; });
+      if (!platforms.length) {
+        alert('Select at least one platform.');
+        return;
+      }
+
+      ayannaBtn.disabled = true;
+      setStatus(ayannaStatus, 'Ayanna is drafting (5-15 sec)...', 'busy');
+      ayannaResult.innerHTML = '';
+
+      fetch('/.netlify/functions/sm-generate', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          brief: brief,
+          audience: (ayannaAudience.value || '').trim(),
+          cta: (ayannaCta.value || '').trim(),
+          tone: ayannaTone.value,
+          platforms: platforms,
+        }),
+      }).then(function(r) {
+        if (r.status === 401) {
+          setStatus(ayannaStatus, 'Auth required. Refresh and re-enter credentials.', 'error');
+          ayannaBtn.disabled = false;
+          return;
+        }
+        return r.json().then(function(j) {
+          ayannaBtn.disabled = false;
+          if (!r.ok || !j.ok) {
+            setStatus(ayannaStatus, (j && j.error) || ('Failed (HTTP ' + r.status + ')'), 'error');
+            if (j && j.detail) ayannaResult.innerHTML = '<p style="color:var(--ink-muted);font-size:0.88rem;">Detail: ' + esc(String(j.detail)) + '</p>';
+            return;
+          }
+          setStatus(ayannaStatus, 'Drafts ready. Copy and review before posting.', 'success');
+          var posts = j.posts || {};
+          ayannaResult.innerHTML = '';
+          Object.keys(posts).forEach(function(platform) {
+            ayannaResult.appendChild(renderPost(platform, posts[platform]));
+          });
+        });
+      }).catch(function(err) {
+        ayannaBtn.disabled = false;
+        setStatus(ayannaStatus, err.message || 'network error', 'error');
       });
     });
   </script>
