@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flame of Hope &middot; Partners &middot; Gandhi-King Center for Nonviolence</title>
-  <meta name="description" content="Flame of Hope is an international partner of the Gandhi-King Center for Nonviolence. The two organizations met during the Gandhi Legacy Tour in India and continue the partnership across continents.">
+  <meta name="description" content="Flame of Hope is an international partner of the Gandhi-King Center. The organization carries one physical flame unified from 15 sacred flames around the world, including Mahatma Gandhi's eternal flame in New Delhi and Dr. Martin Luther King Jr.'s eternal flame in Atlanta.">
   <link rel="canonical" href="https://www.gandhi-king-center-for-nonviolence.org/partners/flame-of-hope">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,10 +13,24 @@
   <style>
     .foh-hero-photo {
       width: 100%;
-      max-height: 540px;
+      max-height: 620px;
       object-fit: cover;
+      object-position: center 30%;
       display: block;
-      margin: 30px 0;
+      margin: 30px 0 8px;
+    }
+    .foh-inline-photo {
+      width: 100%;
+      display: block;
+      margin: 30px 0 8px;
+    }
+    .foh-photo-cap {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.84rem;
+      color: var(--ink-muted);
+      font-style: italic;
+      text-align: center;
+      margin: 0 0 30px;
     }
     .foh-video {
       position: relative;
@@ -44,13 +58,40 @@
       text-align: center;
       padding: 40px;
     }
-    .foh-pending-note {
+    .foh-flames {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 30px 0;
+    }
+    .foh-flame-card {
       background: var(--bg-soft);
-      border-left: 3px solid var(--gold);
-      padding: 20px 24px;
-      font-style: italic;
+      padding: 22px 26px;
+      border-left: 4px solid var(--gold);
+    }
+    .foh-flame-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      margin: 0 0 6px;
+    }
+    .foh-flame-card p {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.96rem;
       color: var(--ink-soft);
-      margin: 24px 0;
+      margin: 0;
+      line-height: 1.55;
+    }
+    .foh-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      text-align: center;
+      color: var(--gold-deep);
+      letter-spacing: 0.06em;
+      margin: 40px 0;
+    }
+    @media (max-width: 700px) {
+      .foh-flames { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -82,32 +123,69 @@
 
   <section class="hero">
     <div class="container">
-      <p class="eyebrow"><a href="/partners">Partners</a> &middot; India</p>
+      <p class="eyebrow"><a href="/partners">Partners</a> &middot; International</p>
       <h1 class="hero__title">Flame of Hope.</h1>
-      <p class="hero__sub">A partner organization rooted in India and walking alongside the Gandhi-King Center across two continents. We met them on the Gandhi Legacy Tour. They came to Dayton. The partnership continues.</p>
+      <p class="hero__sub">One physical flame, unified from 15 sacred flames gathered from around the world &mdash; including Mahatma Gandhi&rsquo;s eternal flame in New Delhi and Dr. Martin Luther King Jr.&rsquo;s eternal flame in Atlanta. The Gandhi-King Center stands alongside a partner whose central artifact carries our two namesakes inside it.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container container--read">
 
-      <img class="foh-hero-photo" src="/assets/images/flame-of-hope-india.jpg" alt="Flame of Hope, India">
+      <img class="foh-hero-photo" src="/assets/images/flame-of-hope-terry-raj-ghat.jpg" alt="Dr. Terry Oroszi holding the Flame of Hope brass lantern at Raj Ghat, Mahatma Gandhi's memorial in New Delhi, beside a Buddhist monk traveling with the flame">
+      <p class="foh-photo-cap">Dr. Terry Oroszi holding the Flame of Hope at Raj Ghat &mdash; Mahatma Gandhi&rsquo;s memorial, New Delhi &mdash; alongside the Buddhist clergy traveling with the flame. January 2023.</p>
+
+      <p class="foh-tagline">&ldquo;One Earth &middot; One Prayer &middot; One Flame.&rdquo;</p>
+
+      <h2>The flame, literally</h2>
+      <p><a href="https://www.flameofhope.net/" target="_blank" rel="noopener">Flame of Hope</a> is the physical unification of fifteen sacred flames gathered from meaningful sites around the world, brought together into one vessel. It is described by its organizers as <em>&ldquo;the first physical manifestation of humankind&rsquo;s common hope for Peace.&rdquo;</em></p>
+
+      <p>The unified flame carries within it, among others:</p>
+
+      <div class="foh-flames">
+        <div class="foh-flame-card">
+          <h4>Mahatma Gandhi&rsquo;s Eternal Flame</h4>
+          <p>From Rajghat, New Delhi &mdash; the memorial at the site of Gandhi&rsquo;s cremation, where an eternal flame has burned since 1948.</p>
+        </div>
+        <div class="foh-flame-card">
+          <h4>Rev. Martin Luther King Jr.&rsquo;s Eternal Flame</h4>
+          <p>From Atlanta, Georgia &mdash; the eternal flame at the Martin Luther King Jr. Center for Nonviolent Social Change, lit by Coretta Scott King.</p>
+        </div>
+        <div class="foh-flame-card">
+          <h4>The Fire of Eternal Peace</h4>
+          <p>From Lumbini, Nepal &mdash; the birthplace of the Buddha.</p>
+        </div>
+        <div class="foh-flame-card">
+          <h4>Twelve more sacred flames</h4>
+          <p>Gathered from peace memorials, sanctuaries, and holy sites across continents and faith traditions.</p>
+        </div>
+      </div>
+
+      <p>His Holiness the Dalai Lama and Pope Francis are among the religious leaders who have publicly received the flame. Tushar Gandhi, the Center&rsquo;s board member and Mahatma Gandhi&rsquo;s great-grandson, is among the world leaders the organization names as supporters.</p>
 
       <h2>How we met</h2>
-      <p>The Gandhi-King Center came to know Flame of Hope during the Gandhi Legacy Tour in India, the same tour where Dr. Oroszi traveled with Tushar Gandhi and Dr. Ellis as the Center&rsquo;s founding U.S. representative. Flame of Hope was already doing their work in their own communities. The Center&rsquo;s response was straightforward: stand alongside, name the partnership publicly, make the work louder.</p>
+      <p>The Gandhi-King Center met Flame of Hope during the Gandhi Legacy Tour in January 2023, the same tour where Dr. Oroszi traveled with Tushar Gandhi and Dr. Ellis as the Center&rsquo;s founding U.S. representative. The Center&rsquo;s introduction to the flame happened where it belongs: at Raj Ghat, in front of Gandhi&rsquo;s eternal flame, with the Japanese clergy who were traveling with the unified lantern.</p>
+
+      <p>That moment was part of a larger international peace pilgrimage that Flame of Hope undertook across 2023 and 2024 with three civilizational stops &mdash; <strong>Fukushima, Japan</strong>, contemporary witness to nuclear catastrophe; <strong>the Vatican</strong>, where the delegation was received by Pope Francis; and <strong>India</strong>, where Gandhi&rsquo;s nonviolence was born and where we met them.</p>
 
       <h2>Coming to Dayton</h2>
-      <p>Flame of Hope traveled to Dayton, Ohio, to meet with the Center&rsquo;s board in person and to walk through the city where the Center is headquartered. International partnerships often die in the gap between the trip out and the trip back. This one did not.</p>
+
+      <img class="foh-inline-photo" src="/assets/images/flame-of-hope-peace-museum-dayton.jpg" alt="Flame of Hope ceremony at the International Peace Museum, Dayton, Ohio">
+      <p class="foh-photo-cap">Flame of Hope ceremony hosted at the International Peace Museum, Dayton, Ohio, with founding clergy and U.S. organizers presenting the flame to a local audience.</p>
+
+      <p>Flame of Hope traveled to Dayton, Ohio, where the Gandhi-King Center is headquartered, for a public ceremony hosted at the <strong>International Peace Museum</strong> &mdash; the only peace museum in the United States and one of the Center&rsquo;s local partners. International partnerships often die in the gap between the trip out and the trip back. This one did not.</p>
+
+      <p>The partnership has continued since. Tushar Gandhi has participated with Flame of Hope in subsequent ceremonies; further programming with the flame is in planning.</p>
 
       <h2>Watch</h2>
       <div class="foh-video foh-video--pending" id="foh-video">
-        <span>Video coming &middot; YouTube embed will appear here once the master is uploaded</span>
+        <span>Video coming &middot; YouTube embed will appear here once the ceremony master is uploaded</span>
       </div>
 
-      <p class="foh-pending-note">Flame of Hope&rsquo;s own mission statement, the names of their leadership, their U.S. and Indian contact channels, and their public link will be added here as the partnership&rsquo;s shared materials are finalized. This page exists now because the partnership is real now &mdash; the documentation follows the work, not the other way around.</p>
-
       <h2>Where to learn more</h2>
-      <p>To inquire about Flame of Hope, propose joint programming, or be introduced to the partnership&rsquo;s leadership, write to <a href="mailto:Admin@gandhi-king-center-for-nonviolence.org">Admin@gandhi-king-center-for-nonviolence.org</a> or use the <a href="/contact">contact form</a> and mention Flame of Hope in your message.</p>
+      <p>Flame of Hope&rsquo;s own website is <a href="https://www.flameofhope.net/" target="_blank" rel="noopener">flameofhope.net</a>. They accept wishes for the world from the public; over 675,000 have been collected. They base their international peace work at <strong>The Pagoda Peace Park</strong> in the Japanese Alps.</p>
+
+      <p>To inquire about Flame of Hope through the Gandhi-King Center, or to be introduced to their leadership for joint programming, write to <a href="mailto:Admin@gandhi-king-center-for-nonviolence.org">Admin@gandhi-king-center-for-nonviolence.org</a> or use the <a href="/contact">contact form</a> and mention Flame of Hope in your message.</p>
 
       <p style="margin-top:50px;"><a href="/partners" class="btn btn--ghost">&larr; All partners</a></p>
 
