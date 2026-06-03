@@ -30,6 +30,7 @@
         <a href="/staff">Team</a>
         <a href="/board">Board</a>
         <a href="/get-involved">Join</a>
+        <a href="/packages">Packages</a>
         <a href="/donate" class="nav-donate">Donate</a>
       </nav>
     </div>
@@ -56,6 +57,7 @@
 
         <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="lend-form" style="margin:0;">
           <input type="hidden" name="form-name" value="contact">
+          <input type="hidden" id="c-package" name="package" value="">
           <p hidden>
             <label>Do not fill this out if you are human: <input name="bot-field"></label>
           </p>
@@ -78,6 +80,7 @@
           <select id="c-subject" name="subject" required>
             <option value="">Select one</option>
             <option value="general">General inquiry</option>
+            <option value="packages">Packages &amp; engagements</option>
             <option value="speaking">Invite a board member to speak</option>
             <option value="kickoff">Host a Season for Nonviolence kickoff</option>
             <option value="partnership">Partnership / Peace Partner</option>
@@ -130,7 +133,57 @@
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Pre-fill from ?package=<slug> when arriving from the Packages catalog.
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var slug = params.get('package');
+      if (!slug) return;
+
+      var titles = {
+        'beloved-community':         'The Beloved Community All-Inclusive Event ($100,000+)',
+        'legacy-leadership-hybrid':  'The Legacy and Leadership Hybrid Event ($25,000-$50,000)',
+        'core-principles-virtual':   'The Core Principles Virtual Event ($5,000-$10,000)',
+        'scott-before-king':         'Scott Before She Was a King Empowerment Event ($15,000-$25,000)',
+        'who-killed-gandhi-screening':'Private Screening with the Director: Who Killed Gandhi? ($30,000-$50,000)',
+        'legacy-leadership-summit':  'Legacy & Leadership Summit ($250,000+)',
+        'global-voices':             'Global Voices Virtual Series ($25,000-$75,000)',
+        'working-board-experience':  'The Working Board Experience ($60,000-$100,000)',
+        'peace-partner-city':        'Peace Partner City ($250,000+)',
+        'global-peace-partner':      'Global Peace Partner ($50,000-$100,000)',
+        'corporate-peace-partner':   'Corporate Peace Partner ($25,000-$75,000)',
+        'youth-peace-partner':       'Youth Peace Partner ($10,000-$25,000)',
+        'legacy-lab':                'Legacy Lab ($15,000)',
+        'conflict-compliance':       'Conflict & Compliance Seminar ($10,000)',
+        'artifacts-popup':           'Artifacts Pop-Up Exhibit ($20,000-$40,000)',
+        'legacy-lounge':             'Legacy Lounge ($50,000-$75,000)',
+        'words-of-wisdom':           'Words of Wisdom video message ($500)',
+        'happy-birthday-king':       'Happy Birthday from a King video message ($750)',
+        'personal-legacy':           'Personal Legacy video message ($1,000)',
+        'scott-message':             'Scott Before She Was a King video message ($750)',
+        'legacy-shoutout':           'Legacy Shoutout ($500)',
+        'ask-peacebuilder':          'Ask a Peacebuilder AMA ($500; no fee for schools)',
+        'behind-the-coin':           'Behind the Coin Storytime ($1,000)'
+      };
+
+      var title = titles[slug] || slug;
+      var pkgField = document.getElementById('c-package');
+      if (pkgField) pkgField.value = slug;
+
+      var subject = document.getElementById('c-subject');
+      if (subject) subject.value = 'packages';
+
+      var message = document.getElementById('c-message');
+      if (message && !message.value) {
+        message.value = 'Re: ' + title + '\n\nTell us about your organization, your audience, the date window you are considering, and any context that would help us serve your event well.\n\n';
+        message.focus();
+        // Place cursor at end so visitor can type immediately.
+        try { message.setSelectionRange(message.value.length, message.value.length); } catch (_) {}
+      }
+    })();
+  </script>
 
 </body>
 </html>

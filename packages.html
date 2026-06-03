@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packages &amp; Engagements &middot; Gandhi-King Center for Nonviolence</title>
+  <meta name="description" content="Bring the Gandhi-King Center to your city, university, or organization. Programming from a 30-second personalized video message to a Season for Nonviolence kickoff weekend with the Gandhi and King families.">
+  <link rel="canonical" href="https://www.gandhi-king-center-for-nonviolence.org/packages">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .pkg-transparency {
+      background: var(--bg-soft);
+      border-left: 4px solid var(--gold);
+      padding: 36px 40px;
+      margin-top: 30px;
+    }
+    .pkg-transparency h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin: 0 0 16px;
+    }
+    .pkg-transparency ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+    .pkg-transparency li { margin-bottom: 6px; }
+    .pkg-transparency .pkg-fineprint {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      margin-top: 18px;
+    }
+
+    .pkg-toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+      padding-top: 26px;
+      border-top: 1px solid var(--rule-soft);
+    }
+    .pkg-toc a {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 8px 14px;
+      border: 1px solid var(--rule);
+      background: #fff;
+      transition: all 0.15s;
+    }
+    .pkg-toc a:hover {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .pkg-card {
+      background: #fff;
+      border: 1px solid var(--rule-soft);
+      padding: 30px 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .pkg-card__tier {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .pkg-card__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 0 0 6px;
+      line-height: 1.25;
+    }
+    .pkg-card__price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--forest);
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+    .pkg-card__audience {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.02em;
+      margin: 0 0 16px;
+      font-style: italic;
+    }
+    .pkg-card__desc {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ink);
+      margin: 0 0 14px;
+    }
+    .pkg-card__includes {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--ink-muted);
+      margin: 4px 0 8px;
+    }
+    .pkg-card ul {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.96rem;
+      line-height: 1.6;
+      padding-left: 18px;
+      margin: 0 0 18px;
+      color: var(--ink);
+    }
+    .pkg-card li { margin-bottom: 5px; }
+    .pkg-card__cta {
+      margin-top: auto;
+      padding-top: 12px;
+    }
+    .pkg-card__cta a {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gold-deep);
+      text-decoration: none;
+    }
+    .pkg-card__cta a:hover { color: var(--ink); }
+
+    .pkg-card--flagship {
+      border: 2px solid var(--gold);
+      background: linear-gradient(180deg, #fff 0%, var(--bg-soft) 100%);
+    }
+
+    .pkg-section-header {
+      max-width: 760px;
+    }
+    .pkg-section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin: 0 0 10px;
+    }
+    .pkg-section-header p {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    .pkg-cta-strip {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 50px 40px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .pkg-cta-strip h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: #fff;
+      margin: 0 0 12px;
+    }
+    .pkg-cta-strip p {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.05rem;
+      color: var(--bg);
+      margin: 0 0 24px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pkg-cta-strip .pkg-floor {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.84rem;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 700px) {
+      .pkg-transparency { padding: 26px 24px; }
+      .pkg-card { padding: 24px 22px; }
+      .pkg-cta-strip { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="/">
+        <span class="site-logo__mark">Gandhi-King Center</span>
+        <span class="site-logo__tag">For Nonviolence</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/season">Season</a>
+        <a href="/education">Education</a>
+        <a href="/advocacy">Advocacy</a>
+        <a href="/community-building">Community</a>
+        <a href="/outreach">Outreach</a>
+        <a href="/archive">Archive</a>
+        <a href="/peace-news">Peace News</a>
+        <a href="/staff">Team</a>
+        <a href="/board">Board</a>
+        <a href="/get-involved">Join</a>
+        <a href="/packages" class="is-active">Packages</a>
+        <a href="/donate" class="nav-donate">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─── Hero ─── -->
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Sponsorships &amp; Engagements</p>
+      <h1 class="hero__title">Bring the Gandhi-King Center to your city, university, or organization.</h1>
+      <p class="hero__sub">Programming runs from a 30-second personalized video message to a full Season for Nonviolence kickoff weekend with the Gandhi and King families present. The catalog below is organized from flagship engagements down to personal gifts.</p>
+    </div>
+  </section>
+
+  <!-- ─── Transparency block ─── -->
+  <section class="section">
+    <div class="container container--read">
+
+      <div class="pkg-transparency">
+        <h2>What you&rsquo;re actually paying for.</h2>
+        <p>The Center&rsquo;s academic board members &mdash; Drs. Oroszi, Polkinghorn, and Ellis &mdash; waive their honoraria for nonprofits, K-12 schools, HBCUs, public libraries, and faith communities, as a matter of practice. Listed prices reflect hard costs:</p>
+        <ul>
+          <li>Legacy family appearance fees (Tushar Gandhi; Rev. Joel King; the Foster cousins of Coretta Scott King, when applicable)</li>
+          <li>Travel and lodging for all participating board members and staff</li>
+          <li>Artifacts exhibit insurance, shipping, curation, and on-site security</li>
+          <li>Commemorative coin minting with host-organization branding</li>
+          <li>VIP event production: gala, dinner, AV, photography, signage</li>
+          <li>Documentation deliverables to the host (event photo set + video recap reel)</li>
+        </ul>
+        <p class="pkg-fineprint">Corporate, government, and well-funded foundation engagements are priced at the published rates. <strong>Sliding scale available</strong> for mission-aligned hosts who cannot meet the published numbers &mdash; reach out with your context.</p>
+      </div>
+
+      <!-- ─── Anchor TOC ─── -->
+      <nav class="pkg-toc" aria-label="Catalog sections">
+        <a href="#tier1">Premium Events</a>
+        <a href="#tier2">Specialized</a>
+        <a href="#enhanced">Enhanced Premium</a>
+        <a href="#peace-partners">Peace Partners</a>
+        <a href="#addons">Modular Add-Ons</a>
+        <a href="#personalized">Personalized &amp; Digital</a>
+      </nav>
+
+    </div>
+  </section>
+
+  <!-- ─── TIER 1: Premium Events ─── -->
+  <section class="section section--soft" id="tier1">
+    <div class="container">
+      <div class="pkg-section-header">
+        <p class="eyebrow">Tier 1</p>
+        <h2>Premium Event Packages.</h2>
+        <p>High-value, all-inclusive engagements for host organizations looking to make a significant public impact. The legacy family is on stage.</p>
+      </div>
+
+      <div class="pkg-grid">
+
+        <article class="pkg-card pkg-card--flagship">
+          <div class="pkg-card__tier">Flagship Season Kickoff</div>
+          <h3 class="pkg-card__title">The Beloved Community All-Inclusive Event</h3>
+          <p class="pkg-card__price">$100,000+</p>
+          <p class="pkg-card__audience">Major cities, large universities, or corporations</p>
+          <p class="pkg-card__desc">The most comprehensive package. Ideal for a city or organization hosting the official kickoff of the annual Season for Nonviolence. Brings together all available board members and special events.</p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li><strong>Panel forum</strong> with Tushar Gandhi, Rev. Joel King, and Gregory Foster, moderated by an academic board member</li>
+            <li><strong>Keynotes &amp; workshops</strong> by Drs. Oroszi, Polkinghorn, and Ellis</li>
+            <li><strong>Artifacts of Legacy exhibit</strong> &mdash; curated authentic Gandhi and King artifacts</li>
+            <li><strong>Custom commemorative coin</strong> with the host organization&rsquo;s name</li>
+            <li><strong>VIP reception</strong> &mdash; exclusive dinner or meet-and-greet for top donors</li>
+            <li><strong>All travel, lodging, and professional fees</strong> for every participating board member and staff</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=beloved-community">Inquire about this package &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Hybrid Event</div>
+          <h3 class="pkg-card__title">The Legacy and Leadership Hybrid Event</h3>
+          <p class="pkg-card__price">$25,000 &ndash; $50,000</p>
+          <p class="pkg-card__audience">Mid-sized cities, universities, or corporations</p>
+          <p class="pkg-card__desc">A blend of virtual and in-person components. Balances the high-profile appeal of the legacy families with the practical expertise of the working board.</p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li><strong>Virtual component:</strong> recorded message from Tushar Gandhi and/or Rev. Joel King</li>
+            <li><strong>In-person component:</strong> one to two academic board members travel for a full day of events, including a keynote and a workshop</li>
+            <li>All travel, lodging, and professional fees for traveling members</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=legacy-leadership-hybrid">Inquire about this package &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Virtual Event</div>
+          <h3 class="pkg-card__title">The Core Principles Virtual Event</h3>
+          <p class="pkg-card__price">$5,000 &ndash; $10,000</p>
+          <p class="pkg-card__audience">Smaller organizations, schools, or community groups</p>
+          <p class="pkg-card__desc">A cost-effective, accessible option. Delivers a powerful message without the logistical costs of in-person travel.</p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li>One-hour virtual keynote or panel discussion on nonviolence featuring two to three board members (Drs. Oroszi, Polkinghorn, and/or Ellis)</li>
+            <li>Virtual Q&amp;A session</li>
+            <li>Digital promotional materials for the host organization</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=core-principles-virtual">Inquire about this package &rarr;</a></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TIER 2: Specialized ─── -->
+  <section class="section" id="tier2">
+    <div class="container">
+      <div class="pkg-section-header">
+        <p class="eyebrow">Tier 2</p>
+        <h2>Specialized Packages.</h2>
+        <p>Single, high-impact engagements built around a specific story or asset the Center holds.</p>
+      </div>
+
+      <div class="pkg-grid">
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Women&rsquo;s Empowerment</div>
+          <h3 class="pkg-card__title">&ldquo;Scott Before She Was a King&rdquo; Empowerment Event</h3>
+          <p class="pkg-card__price">$15,000 &ndash; $25,000</p>
+          <p class="pkg-card__audience">Universities, women&rsquo;s organizations, gender studies programs</p>
+          <p class="pkg-card__desc">Focuses on the vital role of women in the nonviolence movement, led by Gregory Foster&rsquo;s powerful message about his cousin Coretta Scott King.</p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li>Keynote address by Gregory Foster on Coretta Scott King&rsquo;s independent legacy</li>
+            <li>Interactive Q&amp;A with Gregory and Carolyn Foster</li>
+            <li>Professionally produced video module offering an intimate look into Coretta&rsquo;s life</li>
+            <li>Travel and expenses for the Fosters</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=scott-before-king">Inquire about this package &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Film Event</div>
+          <h3 class="pkg-card__title">&ldquo;Private Screening with the Director&rdquo; &mdash; <em>Who Killed Gandhi?</em></h3>
+          <p class="pkg-card__price">$30,000 &ndash; $50,000</p>
+          <p class="pkg-card__audience">Film societies, historical associations, philanthropists</p>
+          <p class="pkg-card__desc">An exclusive look into a pivotal historical moment through the documentary <em>Who Killed Gandhi?</em></p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li>Private screening of the film</li>
+            <li>Expert panel with the film&rsquo;s director, Anand Ramayya, and Tushar Gandhi</li>
+            <li>Audience Q&amp;A with the creators</li>
+            <li>Travel and professional fees for the director and Tushar Gandhi</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=who-killed-gandhi-screening">Inquire about this package &rarr;</a></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Enhanced Premium ─── -->
+  <section class="section section--soft" id="enhanced">
+    <div class="container">
+      <div class="pkg-section-header">
+        <p class="eyebrow">Enhanced Premium</p>
+        <h2>Flagship and Strategic Engagements.</h2>
+        <p>Multi-day, multi-stakeholder programming for hosts who want the full Gandhi-King Center experience.</p>
+      </div>
+
+      <div class="pkg-grid">
+
+        <article class="pkg-card pkg-card--flagship">
+          <div class="pkg-card__tier">Flagship Upgrade</div>
+          <h3 class="pkg-card__title">Legacy &amp; Leadership Summit</h3>
+          <p class="pkg-card__price">$250,000+</p>
+          <p class="pkg-card__audience">Cities, universities, foundations</p>
+          <p class="pkg-card__desc">A full kickoff weekend for the Season for Nonviolence. The Center&rsquo;s most significant offering.</p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li><strong>Dual Legacy Panel:</strong> Gandhi &amp; King family members + strategic experts (Drs. Oroszi, Polkinghorn, Ellis)</li>
+            <li><strong>Leadership Workshop:</strong> conflict resolution, humanitarian strategy, terrorism resilience</li>
+            <li><strong>VIP Gala Dinner</strong> with all participating board members</li>
+            <li>Commemorative coin and artifacts exhibit</li>
+            <li>All travel and professional fees for every participating board member</li>
+            <li><strong>Optional add-on:</strong> host-branded documentary short featuring event highlights and interviews</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=legacy-leadership-summit">Inquire about this package &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Virtual Series</div>
+          <h3 class="pkg-card__title">Global Voices Virtual Series</h3>
+          <p class="pkg-card__price">$25,000 &ndash; $75,000</p>
+          <p class="pkg-card__audience">International orgs, schools, NGOs</p>
+          <p class="pkg-card__desc">Scalable, low-cost, and no travel required. Built for international reach.</p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li>Three-part virtual panel series with rotating board members</li>
+            <li>Topics: nonviolence in global policy, humanitarian innovation, legacy in action</li>
+            <li>Interactive Q&amp;A and breakout sessions</li>
+            <li>Digital exhibit walkthrough</li>
+            <li>Optional branded certificate for attendees</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=global-voices">Inquire about this package &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Strategic Access</div>
+          <h3 class="pkg-card__title">The &ldquo;Working Board&rdquo; Experience</h3>
+          <p class="pkg-card__price">$60,000 &ndash; $100,000</p>
+          <p class="pkg-card__audience">Philanthropic donors, civic leaders, foundation program officers</p>
+          <p class="pkg-card__desc">Behind-the-scenes access to the operational brilliance behind the legacy. For donors who want to fund peace infrastructure, not just hear about it.</p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li>Behind-the-scenes access to planning and strategy sessions</li>
+            <li>Roundtable with Drs. Ellis, Polkinghorn, and Oroszi on building sustainable peace initiatives</li>
+            <li>VIP dinner with legacy family members</li>
+            <li>Custom donor recognition (plaque, coin, or digital honor wall)</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=working-board-experience">Inquire about this package &rarr;</a></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Peace Partners Program ─── -->
+  <section class="section" id="peace-partners">
+    <div class="container">
+      <div class="pkg-section-header">
+        <p class="eyebrow">Recurring Sponsors</p>
+        <h2>Peace Partners Program.</h2>
+        <p>For organizations that want an ongoing, recognizable relationship with the Center rather than a one-time engagement.</p>
+      </div>
+
+      <div class="pkg-grid">
+
+        <article class="pkg-card pkg-card--flagship">
+          <div class="pkg-card__tier">Flagship Tier</div>
+          <h3 class="pkg-card__title">Peace Partner City</h3>
+          <p class="pkg-card__price">$250,000+</p>
+          <p class="pkg-card__audience">Cities</p>
+          <p class="pkg-card__desc">A city-wide designation and a year-anchored partnership with the Center.</p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li>Host the Season for Nonviolence kickoff with full board participation</li>
+            <li>Official &ldquo;Peace Partner City&rdquo; designation</li>
+            <li>Custom city-branded commemorative coin and peace proclamation</li>
+            <li>Legacy Panel + Leadership Workshop + VIP Gala</li>
+            <li>Local youth engagement initiative led by board members</li>
+            <li>All board travel and professional fees covered</li>
+            <li><strong>Optional add-on:</strong> city mural or art installation co-designed with local artists</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=peace-partner-city">Inquire about this tier &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Virtual Tier</div>
+          <h3 class="pkg-card__title">Global Peace Partner</h3>
+          <p class="pkg-card__price">$50,000 &ndash; $100,000</p>
+          <p class="pkg-card__audience">International orgs, universities, foundations with global reach</p>
+          <p class="pkg-card__desc">Recognition and access for international partners without travel logistics.</p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li>Virtual panel series with rotating board members</li>
+            <li>Digital Peace Partner badge for website and social media</li>
+            <li>Co-branded educational toolkit for schools</li>
+            <li>Recognition on the Gandhi-King Center&rsquo;s Wall of Peace</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=global-peace-partner">Inquire about this tier &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Corporate Tier</div>
+          <h3 class="pkg-card__title">Corporate Peace Partner</h3>
+          <p class="pkg-card__price">$25,000 &ndash; $75,000</p>
+          <p class="pkg-card__audience">Companies seeking DEI, CSR, or legacy alignment</p>
+          <p class="pkg-card__desc">An employee-facing engagement with public recognition.</p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li>Custom workshop or keynote for employees</li>
+            <li>Recognition in Season for Nonviolence materials</li>
+            <li>Co-branded social media campaign</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=corporate-peace-partner">Inquire about this tier &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Youth Tier</div>
+          <h3 class="pkg-card__title">Youth Peace Partner</h3>
+          <p class="pkg-card__price">$10,000 &ndash; $25,000</p>
+          <p class="pkg-card__audience">Schools, youth orgs, student-led initiatives</p>
+          <p class="pkg-card__desc">Designed for schools and student programs at an accessible price point. Eligible for sliding scale.</p>
+          <p class="pkg-card__includes">Includes</p>
+          <ul>
+            <li>Virtual mentoring session with board members</li>
+            <li>Peacebuilding curriculum access</li>
+            <li>Digital certificate and recognition</li>
+            <li>Invitation to submit projects for the annual symposium</li>
+          </ul>
+          <p class="pkg-card__cta"><a href="/contact?package=youth-peace-partner">Inquire about this tier &rarr;</a></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Modular Add-Ons ─── -->
+  <section class="section section--soft" id="addons">
+    <div class="container">
+      <div class="pkg-section-header">
+        <p class="eyebrow">Modular Add-Ons</p>
+        <h2>Standalone Programming.</h2>
+        <p>Can be added to any event above, or booked on their own.</p>
+      </div>
+
+      <div class="pkg-grid">
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Add-On</div>
+          <h3 class="pkg-card__title">Legacy Lab</h3>
+          <p class="pkg-card__price">$15,000</p>
+          <p class="pkg-card__desc">Interactive workshop led by Drs. Oroszi and Polkinghorn on process-driven peacebuilding.</p>
+          <p class="pkg-card__cta"><a href="/contact?package=legacy-lab">Inquire &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Add-On</div>
+          <h3 class="pkg-card__title">Conflict &amp; Compliance Seminar</h3>
+          <p class="pkg-card__price">$10,000</p>
+          <p class="pkg-card__desc">Seminar on navigating humanitarian compliance, led by Drs. Polkinghorn and Oroszi.</p>
+          <p class="pkg-card__cta"><a href="/contact?package=conflict-compliance">Inquire &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Add-On</div>
+          <h3 class="pkg-card__title">Artifacts Pop-Up Exhibit</h3>
+          <p class="pkg-card__price">$20,000 &ndash; $40,000</p>
+          <p class="pkg-card__desc">Curated authentic Gandhi and King artifacts with guided tour. In-person or virtual walkthrough available. Range reflects shipping, insurance, and on-site security costs.</p>
+          <p class="pkg-card__cta"><a href="/contact?package=artifacts-popup">Inquire &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Add-On</div>
+          <h3 class="pkg-card__title">Legacy Lounge</h3>
+          <p class="pkg-card__price">$50,000 &ndash; $75,000</p>
+          <p class="pkg-card__desc">An intimate donor salon. Curated audio, drinks, and board member Q&amp;A in a small-group setting.</p>
+          <p class="pkg-card__cta"><a href="/contact?package=legacy-lounge">Inquire &rarr;</a></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Personalized & Digital ─── -->
+  <section class="section" id="personalized">
+    <div class="container">
+      <div class="pkg-section-header">
+        <p class="eyebrow">Personalized &amp; Digital</p>
+        <h2>For Individuals and Small Groups.</h2>
+        <p>Personal connection to the Center&rsquo;s board members for special occasions, inspiration, or gifts. Below the $5,000 custom-event floor.</p>
+      </div>
+
+      <div class="pkg-grid">
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Video Message</div>
+          <h3 class="pkg-card__title">Words of Wisdom</h3>
+          <p class="pkg-card__price">$500</p>
+          <p class="pkg-card__desc">A 30-second video of Tushar Gandhi, Rev. Joel King, or Gregory Foster reciting a famous quote of your choosing.</p>
+          <p class="pkg-card__cta"><a href="/contact?package=words-of-wisdom">Order &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Video Message</div>
+          <h3 class="pkg-card__title">Happy Birthday, from a King</h3>
+          <p class="pkg-card__price">$750</p>
+          <p class="pkg-card__desc">A 30-second video from a King family member wishing a loved one a happy birthday.</p>
+          <p class="pkg-card__cta"><a href="/contact?package=happy-birthday-king">Order &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Video Message</div>
+          <h3 class="pkg-card__title">Personal Legacy Message</h3>
+          <p class="pkg-card__price">$1,000</p>
+          <p class="pkg-card__desc">A 60-second customized video from Tushar Gandhi or a King family member for any occasion.</p>
+          <p class="pkg-card__cta"><a href="/contact?package=personal-legacy">Order &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Video Message</div>
+          <h3 class="pkg-card__title">&ldquo;Scott Before She Was a King&rdquo; Message</h3>
+          <p class="pkg-card__price">$750</p>
+          <p class="pkg-card__desc">A 60-second video from Gregory Foster sharing his cousin Coretta&rsquo;s legacy.</p>
+          <p class="pkg-card__cta"><a href="/contact?package=scott-message">Order &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Micro Engagement</div>
+          <h3 class="pkg-card__title">Legacy Shoutout</h3>
+          <p class="pkg-card__price">$500</p>
+          <p class="pkg-card__desc">A short personalized message from any board member for a grassroots fundraiser, classroom, or social campaign.</p>
+          <p class="pkg-card__cta"><a href="/contact?package=legacy-shoutout">Order &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Micro Engagement</div>
+          <h3 class="pkg-card__title">Ask a Peacebuilder AMA</h3>
+          <p class="pkg-card__price">$500</p>
+          <p class="pkg-card__desc">A 30-minute virtual Q&amp;A with Dr. Oroszi or Dr. Polkinghorn. <em>No fee for K-12 schools and student organizations &mdash; just ask.</em></p>
+          <p class="pkg-card__cta"><a href="/contact?package=ask-peacebuilder">Inquire &rarr;</a></p>
+        </article>
+
+        <article class="pkg-card">
+          <div class="pkg-card__tier">Micro Engagement</div>
+          <h3 class="pkg-card__title">Behind the Coin Storytime</h3>
+          <p class="pkg-card__price">$1,000</p>
+          <p class="pkg-card__desc">A virtual storytelling session about the commemorative coin&rsquo;s meaning and the lineage it represents.</p>
+          <p class="pkg-card__cta"><a href="/contact?package=behind-the-coin">Inquire &rarr;</a></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Closing CTA ─── -->
+  <section class="section">
+    <div class="container container--read">
+
+      <div class="pkg-cta-strip">
+        <h3>Ready to host the Center?</h3>
+        <p>Tell us about your organization, your audience, your budget, and the date window you&rsquo;re considering. We&rsquo;ll respond within five business days with a tailored proposal and an honest read on whether we can serve your event well.</p>
+        <p style="margin-top:30px;">
+          <a href="/contact" class="btn btn--gold">Inquire about a package &rarr;</a>
+        </p>
+        <p class="pkg-floor">Custom event inquiries start at $5,000 &middot; Personalized video messages available individually below that amount</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <h4>Gandhi-King Center for Nonviolence</h4>
+          <p>A 501(c)(3) private foundation carrying forward the philosophies and lives of Mahatma Gandhi and Dr. Martin Luther King Jr.</p>
+          <p>EIN 99-3986935</p>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <ul>
+            <li><a href="/season">The Season</a></li>
+            <li><a href="/board">The Board</a></li>
+            <li><a href="/staff">The Team</a></li>
+            <li><a href="/archive">The Archive</a></li>
+            <li><a href="/education">Education</a></li>
+            <li><a href="/advocacy">Advocacy</a></li>
+            <li><a href="/community-building">Community Building</a></li>
+            <li><a href="/outreach">Outreach</a></li>
+            <li><a href="/packages">Packages</a></li>
+            <li><a href="/donate">Donate</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>Admin@gandhi-king-center-for-nonviolence.org</p>
+          <p>109 North Main Street, Suite 1206<br>Dayton, OH 45402-1294</p>
+          <p style="margin-top:14px;"><a href="/contact">Contact form &rarr;</a></p>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>&copy; <span id="year">2026</span> Gandhi-King Center for Nonviolence. All rights reserved.</span>
+        <span><a href="/privacy">Privacy Policy</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>

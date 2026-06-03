@@ -159,6 +159,12 @@
   to = "/peace-partners.html"
   status = 200
 
+# Packages & engagements catalog. Pretty URL for /packages.html.
+[[redirects]]
+  from = "/packages"
+  to = "/packages.html"
+  status = 200
+
 [[redirects]]
   from = "/contact"
   to = "/contact.html"
