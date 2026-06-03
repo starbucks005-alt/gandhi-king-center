@@ -697,6 +697,23 @@ p { margin: 0 0 1em 0; }
   margin-top: 28px;
 }
 
+/* ─── Embedded video (YouTube / Vimeo) ───────────────────────── */
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  background: var(--ink);
+  border: 1px solid var(--rule-soft);
+  overflow: hidden;
+  margin: 24px 0;
+}
+.video-embed iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
 /* ─── Reduced motion ──────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
