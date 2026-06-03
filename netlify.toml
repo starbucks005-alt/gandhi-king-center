@@ -97,6 +97,12 @@
   to = "/.netlify/functions/peace-news-piece?slug=:slug"
   status = 200
 
+# Newsletter signup page (embeds Mailchimp form; no backend needed).
+[[redirects]]
+  from = "/newsletter"
+  to = "/newsletter.html"
+  status = 200
+
 # Admin console. Lightly protected (function-level basic auth on writes;
 # the page itself is publicly viewable but no action works without auth).
 [[redirects]]

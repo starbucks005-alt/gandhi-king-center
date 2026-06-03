@@ -93,6 +93,38 @@
         <div class="admin-result" id="sneha-result"></div>
       </div>
 
+      <!-- ─── Ayanna: Newsletter draft ─── -->
+      <div class="admin-card">
+        <h2>Newsletter draft (Ayanna)</h2>
+        <p class="admin-card__sub">Brief Ayanna on this issue's theme + recent updates + upcoming items + CTA. She returns a full draft (subject, preheader, body) ready to paste into Mailchimp's editor.</p>
+
+        <label for="nl-theme" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:block;margin-bottom:6px;">Theme (required)</label>
+        <input id="nl-theme" type="text" placeholder="e.g., 'Season for Nonviolence Day 30 update', 'Peace Camp registration is open', 'Tushar Gandhi speaks at Wright State'">
+
+        <label for="nl-updates" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:block;margin-bottom:6px;">Recent updates (one per line)</label>
+        <textarea id="nl-updates" placeholder="Sneha filed her first dispatch on civil resistance in Myanmar\nGandhi Legacy Tour 2026 is fully subscribed; 2027 tour open\nDr. King's restored Ebony article now available for download"></textarea>
+
+        <label for="nl-upcoming" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:block;margin-bottom:6px;">Upcoming items (one per line)</label>
+        <textarea id="nl-upcoming" placeholder="Peace Camp June 22-26 at the Peace Museum\nSeason for Nonviolence 2027 kickoff city to be announced in October"></textarea>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div>
+            <label for="nl-cta" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:block;margin-bottom:6px;">Call to action</label>
+            <input id="nl-cta" type="text" placeholder="Donate, Register for Peace Camp, RSVP, Read the dispatch">
+          </div>
+          <div>
+            <label for="nl-audience" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:block;margin-bottom:6px;">Audience (optional)</label>
+            <input id="nl-audience" type="text" placeholder="donors, educators, faith communities, mixed">
+          </div>
+        </div>
+
+        <div class="admin-card__row">
+          <button type="button" id="nl-run" class="btn btn--primary">Draft issue &rarr;</button>
+          <span class="admin-status" id="nl-status"></span>
+        </div>
+        <div class="admin-result" id="nl-result"></div>
+      </div>
+
       <!-- ─── Ayanna: SM generator ─── -->
       <div class="admin-card">
         <h2>Brief Ayanna Cole</h2>
@@ -204,6 +236,92 @@
       }).catch(function(err) {
         snehaBtn.disabled = false;
         setStatus(snehaStatus, err.message || 'network error', 'error');
+      });
+    });
+
+    // ─── Ayanna: draft a newsletter issue ───
+    var nlBtn      = document.getElementById('nl-run');
+    var nlStatus   = document.getElementById('nl-status');
+    var nlResult   = document.getElementById('nl-result');
+    var nlTheme    = document.getElementById('nl-theme');
+    var nlUpdates  = document.getElementById('nl-updates');
+    var nlUpcoming = document.getElementById('nl-upcoming');
+    var nlCta      = document.getElementById('nl-cta');
+    var nlAudience = document.getElementById('nl-audience');
+
+    nlBtn.addEventListener('click', function() {
+      var theme = (nlTheme.value || '').trim();
+      if (theme.length < 3) {
+        alert('Theme is required. Give Ayanna a sentence on what this issue is about.');
+        return;
+      }
+      var updates  = (nlUpdates.value  || '').split('\n').map(function(s){ return s.trim(); }).filter(Boolean);
+      var upcoming = (nlUpcoming.value || '').split('\n').map(function(s){ return s.trim(); }).filter(Boolean);
+
+      nlBtn.disabled = true;
+      setStatus(nlStatus, 'Ayanna is drafting (10-25 sec)...', 'busy');
+      nlResult.innerHTML = '';
+
+      fetch('/.netlify/functions/newsletter-draft', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          theme: theme,
+          updates: updates,
+          upcoming: upcoming,
+          cta: (nlCta.value || '').trim(),
+          audience: (nlAudience.value || '').trim(),
+        }),
+      }).then(function(r) {
+        if (r.status === 401) {
+          setStatus(nlStatus, 'Auth required. Refresh and re-enter credentials.', 'error');
+          nlBtn.disabled = false;
+          return;
+        }
+        return r.json().then(function(j) {
+          nlBtn.disabled = false;
+          if (!r.ok || !j.ok) {
+            setStatus(nlStatus, (j && j.error) || ('Failed (HTTP ' + r.status + ')'), 'error');
+            if (j && j.detail) nlResult.innerHTML = '<p style="color:var(--ink-muted);font-size:0.88rem;">Detail: ' + esc(String(j.detail)) + '</p>';
+            return;
+          }
+          setStatus(nlStatus, 'Draft ready. Copy each field into Mailchimp.', 'success');
+          nlResult.innerHTML = ''
+            + '<div style="background:#fff;border:1px solid var(--rule);padding:18px 20px;margin-top:14px;">'
+            + '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:10px;flex-wrap:wrap;">'
+            + '    <strong style="font-family:\'Inter\',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-deep);">Subject line</strong>'
+            + '    <button type="button" class="btn btn--ghost" style="font-size:11px;padding:6px 14px;" data-copy-target="nl-subject">Copy</button>'
+            + '  </div>'
+            + '  <div id="nl-subject" style="font-family:\'Crimson Pro\',serif;font-size:1rem;"></div>'
+            + '</div>'
+            + '<div style="background:#fff;border:1px solid var(--rule);padding:18px 20px;margin-top:14px;">'
+            + '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:10px;flex-wrap:wrap;">'
+            + '    <strong style="font-family:\'Inter\',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-deep);">Preheader</strong>'
+            + '    <button type="button" class="btn btn--ghost" style="font-size:11px;padding:6px 14px;" data-copy-target="nl-preheader">Copy</button>'
+            + '  </div>'
+            + '  <div id="nl-preheader" style="font-family:\'Crimson Pro\',serif;font-size:0.95rem;color:var(--ink-soft);"></div>'
+            + '</div>'
+            + '<div style="background:#fff;border:1px solid var(--rule);padding:18px 20px;margin-top:14px;">'
+            + '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:10px;flex-wrap:wrap;">'
+            + '    <strong style="font-family:\'Inter\',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-deep);">Body (paste into Mailchimp editor)</strong>'
+            + '    <button type="button" class="btn btn--ghost" style="font-size:11px;padding:6px 14px;" data-copy-target="nl-body">Copy</button>'
+            + '  </div>'
+            + '  <div id="nl-body" style="white-space:pre-wrap;font-family:\'Crimson Pro\',serif;font-size:0.96rem;line-height:1.55;"></div>'
+            + '</div>';
+          document.getElementById('nl-subject').textContent = j.subject;
+          document.getElementById('nl-preheader').textContent = j.preheader;
+          document.getElementById('nl-body').textContent = j.body_text;
+          nlResult.querySelectorAll('[data-copy-target]').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              var target = document.getElementById(btn.getAttribute('data-copy-target'));
+              if (target) copyToClipboard(target.textContent, btn);
+            });
+          });
+        });
+      }).catch(function(err) {
+        nlBtn.disabled = false;
+        setStatus(nlStatus, err.message || 'network error', 'error');
       });
     });
 
