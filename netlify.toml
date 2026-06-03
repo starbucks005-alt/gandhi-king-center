@@ -51,12 +51,18 @@
   to = "/the-kings-in-india.html"
   status = 200
 
-# Unlinked from primary nav: surprise tribute to Carolyn and Gregory Foster.
-# Page is reachable at the URL but not advertised. Add to nav blocks across
-# pages after the in-person reveal.
+# Linked from /community-building and the homepage Community pillar card.
+# Not in primary nav (kept slim at 8 items).
 [[redirects]]
   from = "/scott-before-king"
   to = "/scott-before-king.html"
+  status = 200
+
+# Deeper page for The Baroness Harris of Richmond DL, Patron.
+# Linked from /board with a "Read more" on her card.
+[[redirects]]
+  from = "/patron"
+  to = "/patron.html"
   status = 200
 
 [[redirects]]
