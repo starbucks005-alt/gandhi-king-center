@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peace News &middot; Gandhi-King Center for Nonviolence</title>
+  <meta name="description" content="World peace and nonviolence dispatches from Sneha Desai, Peace News Correspondent for the Gandhi-King Center. Civil resistance, nonviolent movements, peace negotiations, faith-traditions peace work.">
+  <link rel="canonical" href="https://www.gandhi-king-center-for-nonviolence.org/peace-news">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .pn-list { margin-top: 36px; }
+    .pn-card {
+      display: block;
+      background: #fff;
+      border: 1px solid var(--rule-soft);
+      padding: 26px 28px;
+      margin-bottom: 18px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .pn-card:hover { border-color: var(--gold); transform: translateY(-1px); color: var(--ink); }
+    .pn-card__date {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .pn-card__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      line-height: 1.25;
+      margin: 0 0 10px;
+    }
+    .pn-card__dek {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      margin: 0;
+      line-height: 1.55;
+    }
+    .pn-card__tags {
+      margin-top: 14px;
+    }
+    .pn-card__tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      border: 1px solid var(--rule);
+      padding: 2px 8px;
+      margin-right: 6px;
+      margin-top: 4px;
+    }
+    .pn-empty {
+      background: var(--bg-soft);
+      padding: 32px;
+      border-left: 3px solid var(--gold);
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="/">
+        <span class="site-logo__mark">Gandhi-King Center</span>
+        <span class="site-logo__tag">For Nonviolence</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/season">Season</a>
+        <a href="/education">Education</a>
+        <a href="/advocacy">Advocacy</a>
+        <a href="/community-building">Community</a>
+        <a href="/outreach">Outreach</a>
+        <a href="/archive">Archive</a>
+        <a href="/board">Board</a>
+        <a href="/donate" class="nav-donate">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Peace News &middot; filed by <a href="/staff/sneha-desai">Sneha Desai</a></p>
+      <h1 class="hero__title">World peace and nonviolence, on the wire.</h1>
+      <p class="hero__sub">Weekly dispatches on civil resistance, peace negotiations, post-conflict reconciliation, women-led peacebuilding, and the faith-traditions peace work that doesn't make commercial wires. Wire-service neutral. AP-style. Filed by Sneha Desai, the center's Peace News Correspondent.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--read">
+      <div class="pn-list" id="pn-list" aria-live="polite">
+        <p class="pn-empty">Loading the latest dispatches&hellip;</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <h4>Gandhi-King Center for Nonviolence</h4>
+          <p>A 501(c)(3) private foundation carrying forward the philosophies and lives of Mahatma Gandhi and Dr. Martin Luther King Jr.</p>
+          <p>EIN 99-3986935</p>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <ul>
+            <li><a href="/season">The Season</a></li>
+            <li><a href="/board">The Board</a></li>
+            <li><a href="/staff">The Team</a></li>
+            <li><a href="/archive">The Archive</a></li>
+            <li><a href="/peace-news">Peace News</a></li>
+            <li><a href="/press">In the News</a></li>
+            <li><a href="/donate">Donate</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>Admin@gandhi-king-center-for-nonviolence.org</p>
+          <p>109 North Main Street, Suite 1206<br>Dayton, OH 45402-1294</p>
+          <p style="margin-top:14px;"><a href="/contact">Contact form &rarr;</a></p>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>&copy; <span id="year">2026</span> Gandhi-King Center for Nonviolence. All rights reserved.</span>
+        <span><a href="/privacy">Privacy Policy</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function esc(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+    function fmtDate(iso) {
+      try {
+        return new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      } catch (_) { return iso; }
+    }
+
+    (function loadPeaceNews() {
+      var listEl = document.getElementById('pn-list');
+      fetch('/.netlify/functions/peace-news-list')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var items = (data && data.dispatches) || [];
+          if (!items.length) {
+            listEl.innerHTML = '<p class="pn-empty">Sneha has not filed her first dispatch yet. Check back soon &mdash; the desk is just spinning up.</p>';
+            return;
+          }
+          listEl.innerHTML = items.map(function(d) {
+            var tags = (d.tags || []).map(function(t) {
+              return '<span class="pn-card__tag">' + esc(t) + '</span>';
+            }).join('');
+            return ''
+              + '<a class="pn-card" href="/peace-news/' + esc(d.slug) + '">'
+              + '  <div class="pn-card__date">' + esc(fmtDate(d.published_at)) + '</div>'
+              + '  <h2 class="pn-card__title">' + esc(d.title) + '</h2>'
+              + (d.dek ? '  <p class="pn-card__dek">' + esc(d.dek) + '</p>' : '')
+              + (tags ? '  <div class="pn-card__tags">' + tags + '</div>' : '')
+              + '</a>';
+          }).join('');
+        })
+        .catch(function(err) {
+          listEl.innerHTML = '<p class="pn-empty">Could not load dispatches right now. Refresh the page in a moment.</p>';
+          console.error('peace-news-list fetch failed', err);
+        });
+    })();
+  </script>
+
+</body>
+</html>

@@ -68,12 +68,14 @@
       <h2>Voice</h2>
       <p>Wire-service neutral, AP-style, never sensational. Names sources by community and specialty rather than just by title. Treats traditional and folk practices the way she treats academic studies, with attention to what they actually claim and why. Doesn't mistake the press release for the story. Doesn't mistake the headline for the truth.</p>
 
-      <h2>Available work</h2>
-      <p>Sneha files her weekly dispatches to the Peace News desk, which will appear on this site as the desk launches. Editors at university papers, nonprofit publications, and faith-tradition newsletters who would like to republish her work without cost may inquire through <a href="/contact">the contact form</a>.</p>
-
-      <div style="background:var(--bg-soft);padding:20px 24px;border-left:3px solid var(--gold);margin-top:30px;">
-        <p style="margin:0;font-size:0.94rem;color:var(--ink-soft);"><strong>Peace News desk launches with the next site update.</strong> Sneha's first dispatches will be archived here as they file.</p>
+      <h2>Latest dispatches</h2>
+      <div id="sneha-latest" aria-live="polite" style="margin-top:18px;">
+        <p style="background:var(--bg-soft);padding:18px 22px;border-left:3px solid var(--gold);font-style:italic;color:var(--ink-soft);margin:0;">Loading Sneha's most recent dispatches&hellip;</p>
       </div>
+      <p style="margin-top:18px;"><a href="/peace-news" class="btn btn--ghost">All Peace News dispatches &rarr;</a></p>
+
+      <h2 style="margin-top:50px;">Republish her work</h2>
+      <p>Editors at university papers, nonprofit publications, and faith-tradition newsletters who would like to republish Sneha's dispatches without cost may inquire through <a href="/contact">the contact form</a>.</p>
 
       <p style="margin-top:30px;"><a href="/staff" class="btn btn--ghost">&larr; Back to the team</a></p>
 
@@ -116,7 +118,42 @@
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fetch Sneha's 3 most recent dispatches from the Peace News index.
+    (function loadLatest() {
+      var el = document.getElementById('sneha-latest');
+      if (!el) return;
+      fetch('/.netlify/functions/peace-news-list?limit=3')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var items = (data && data.dispatches) || [];
+          if (!items.length) {
+            el.innerHTML = '<p style="background:var(--bg-soft);padding:18px 22px;border-left:3px solid var(--gold);font-style:italic;color:var(--ink-soft);margin:0;">Sneha has not filed her first dispatch yet. The desk is just spinning up.</p>';
+            return;
+          }
+          function esc(s) {
+            return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+          }
+          function fmtDate(iso) {
+            try { return new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }); }
+            catch (_) { return iso; }
+          }
+          el.innerHTML = items.map(function(d) {
+            return ''
+              + '<a href="/peace-news/' + esc(d.slug) + '" style="display:block;background:#fff;border:1px solid var(--rule-soft);padding:20px 22px;margin-bottom:12px;text-decoration:none;color:var(--ink);">'
+              + '  <div style="font-family:\'Inter\',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;margin-bottom:6px;">' + esc(fmtDate(d.published_at)) + '</div>'
+              + '  <h3 style="font-family:\'Playfair Display\',serif;font-size:1.2rem;margin:0 0 6px;">' + esc(d.title) + '</h3>'
+              + (d.dek ? '  <p style="margin:0;font-size:0.95rem;color:var(--ink-soft);">' + esc(d.dek) + '</p>' : '')
+              + '</a>';
+          }).join('');
+        })
+        .catch(function() {
+          el.innerHTML = '<p style="background:var(--bg-soft);padding:18px 22px;border-left:3px solid var(--gold);font-style:italic;color:var(--ink-soft);margin:0;">Could not load dispatches right now. Refresh in a moment.</p>';
+        });
+    })();
+  </script>
 
 </body>
 </html>

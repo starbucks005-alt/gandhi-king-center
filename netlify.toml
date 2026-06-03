@@ -5,6 +5,17 @@
 [functions]
   node_bundler = "esbuild"
 
+# Sneha's Peace News writer needs a longer timeout for Anthropic + web_search.
+# Background function (-background suffix) gets up to 15 min automatically.
+  [functions.peace-news-write-background]
+    timeout = 900
+
+  [functions.peace-news-list]
+    timeout = 10
+
+  [functions.peace-news-piece]
+    timeout = 10
+
 # Pretty URLs: /board instead of /board.html
 [[redirects]]
   from = "/board"
@@ -70,6 +81,27 @@
 [[redirects]]
   from = "/press"
   to = "/press.html"
+  status = 200
+
+# Peace News desk (Sneha Desai's dispatches). The list page is static
+# HTML that fetches from peace-news-list. Each piece is server-rendered
+# from blob storage by peace-news-piece — no rebuild needed when a new
+# dispatch files.
+[[redirects]]
+  from = "/peace-news"
+  to = "/peace-news.html"
+  status = 200
+
+[[redirects]]
+  from = "/peace-news/:slug"
+  to = "/.netlify/functions/peace-news-piece?slug=:slug"
+  status = 200
+
+# Admin console. Lightly protected (function-level basic auth on writes;
+# the page itself is publicly viewable but no action works without auth).
+[[redirects]]
+  from = "/admin"
+  to = "/admin.html"
   status = 200
 
 # Staff index page + individual native staff profiles. Borrowed pro-bono

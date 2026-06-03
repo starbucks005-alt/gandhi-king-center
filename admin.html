@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin &middot; Gandhi-King Center</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .admin-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+    .admin-card h2 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+    .admin-card__sub {
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+      margin-bottom: 18px;
+    }
+    .admin-card input[type="text"], .admin-card textarea {
+      width: 100%;
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      padding: 10px 12px;
+      border: 1px solid var(--rule);
+      background: #fff;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .admin-card textarea { min-height: 80px; resize: vertical; }
+    .admin-card__row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .admin-status {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+    }
+    .admin-status.busy    { color: var(--gold-deep); }
+    .admin-status.success { color: var(--forest); }
+    .admin-status.error   { color: #b14025; }
+    .admin-result {
+      margin-top: 18px;
+      font-size: 0.95rem;
+    }
+    .admin-result p { margin: 0 0 8px; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="/">
+        <span class="site-logo__mark">Gandhi-King Center</span>
+        <span class="site-logo__tag">Admin</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/">&larr; Back to site</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Admin Console</p>
+      <h1 class="hero__title">Staff dispatch tools.</h1>
+      <p class="hero__sub">Brief the center's AI staff and fire their workflows. Authentication is HTTP Basic; your browser will prompt for credentials when you click a Run button. Credentials are the <code>GK_ADMIN_USER</code> and <code>GK_ADMIN_PASS</code> set in Netlify env vars.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--read">
+
+      <!-- ─── Sneha: Peace News dispatch ─── -->
+      <div class="admin-card">
+        <h2>Commission Sneha Desai</h2>
+        <p class="admin-card__sub">Peace News Correspondent. Files one world peace / nonviolence dispatch using web search to find a real current story.</p>
+
+        <label for="sneha-seed" style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:block;margin-bottom:6px;">Optional topic seed</label>
+        <textarea id="sneha-seed" placeholder="Leave blank for Sneha to pick. Or narrow the search: 'civil resistance in Myanmar', 'Punjab farmer mobilizations', 'post-Bosnia reconciliation initiatives'..."></textarea>
+
+        <div class="admin-card__row">
+          <button type="button" id="sneha-run" class="btn btn--primary">Commission dispatch &rarr;</button>
+          <span class="admin-status" id="sneha-status"></span>
+        </div>
+        <div class="admin-result" id="sneha-result"></div>
+      </div>
+
+      <!-- More staff tools will be added below as they wire up. -->
+      <p style="margin-top:40px;color:var(--ink-muted);font-style:italic;font-size:0.92rem;">Ayanna Cole's communications generator (social posts, press releases, donor copy) will appear here next.</p>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__bottom">
+        <span>&copy; <span id="year">2026</span> Gandhi-King Center for Nonviolence. All rights reserved.</span>
+        <span><a href="/">Public site</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function setStatus(el, msg, kind) {
+      el.className = 'admin-status' + (kind ? ' ' + kind : '');
+      el.textContent = msg;
+    }
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    // ─── Sneha: commission a Peace News dispatch ───
+    var snehaBtn    = document.getElementById('sneha-run');
+    var snehaStatus = document.getElementById('sneha-status');
+    var snehaResult = document.getElementById('sneha-result');
+    var snehaSeed   = document.getElementById('sneha-seed');
+
+    snehaBtn.addEventListener('click', function() {
+      var topic_seed = (snehaSeed.value || '').trim();
+      if (!window.confirm('Commission a new Peace News dispatch from Sneha?' + (topic_seed ? '\n\nSeed: ' + topic_seed : '\n\n(No seed - Sneha picks the story)'))) return;
+      snehaBtn.disabled = true;
+      setStatus(snehaStatus, 'Sneha is searching and drafting (60-180 sec)...', 'busy');
+      snehaResult.innerHTML = '';
+
+      // Background function returns 202 immediately; the actual work runs in
+      // the background for up to 15 min. We do not block on the result here;
+      // we point the user at the public page where the dispatch will appear.
+      fetch('/.netlify/functions/peace-news-write-background', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic_seed: topic_seed }),
+      }).then(function(r) {
+        if (r.status >= 200 && r.status < 300) {
+          setStatus(snehaStatus, 'Drafting in the background. Check /peace-news in 1-3 minutes.', 'success');
+          snehaResult.innerHTML = '<p>Sneha is searching the wires now. The dispatch will appear on <a href="/peace-news" target="_blank" rel="noopener">/peace-news</a> in 60-180 seconds. You can fire another while this one is running.</p>';
+          setTimeout(function(){ snehaBtn.disabled = false; }, 4000);
+          return;
+        }
+        if (r.status === 401) {
+          setStatus(snehaStatus, 'Auth required. Refresh and re-enter credentials.', 'error');
+          snehaBtn.disabled = false;
+          return;
+        }
+        return r.json().catch(function() { return { error: 'unknown' }; }).then(function(j) {
+          snehaBtn.disabled = false;
+          setStatus(snehaStatus, (j && j.error) || ('Failed (HTTP ' + r.status + ')'), 'error');
+          if (j && j.detail) snehaResult.innerHTML = '<p>Detail: ' + esc(String(j.detail)) + '</p>';
+        });
+      }).catch(function(err) {
+        snehaBtn.disabled = false;
+        setStatus(snehaStatus, err.message || 'network error', 'error');
+      });
+    });
+  </script>
+
+</body>
+</html>
