@@ -65,6 +65,13 @@
   to = "/patron.html"
   status = 200
 
+# Press coverage of the center, beginning with Wright State Newsroom's
+# documentation of the founding January 2023 India trip.
+[[redirects]]
+  from = "/press"
+  to = "/press.html"
+  status = 200
+
 [[redirects]]
   from = "/peace-partners"
   to = "/peace-partners.html"
