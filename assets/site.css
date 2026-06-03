@@ -697,6 +697,52 @@ p { margin: 0 0 1em 0; }
   margin-top: 28px;
 }
 
+/* ─── Portrait blink animation ─────────────────────────────────
+   Two stacked images: an eyes-open base, an eyes-closed overlay
+   that flashes for ~200ms every 8.4s. Same pattern as the ETL
+   Newswire homepage blink. Used for the AI staff persona photos
+   so they read as living agents at work, not static avatars.
+   Respects prefers-reduced-motion. */
+.portrait-blink {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-soft);
+  width: 100%;
+  aspect-ratio: 4 / 5;
+}
+.portrait-blink img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.portrait-blink__closed {
+  opacity: 0;
+  animation: gk-portrait-blink 8.4s infinite;
+}
+@keyframes gk-portrait-blink {
+  0%, 92%   { opacity: 0; }
+  94%, 96%  { opacity: 1; }
+  98%, 100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portrait-blink__closed { animation: none; opacity: 0; }
+}
+
+/* Hero portrait + bio side-by-side on persona pages */
+.persona-hero {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.persona-hero .portrait-blink { aspect-ratio: 4 / 5; border: 1px solid var(--rule-soft); }
+@media (max-width: 700px) {
+  .persona-hero { grid-template-columns: 1fr; max-width: 360px; }
+}
+
 /* ─── Embedded video (YouTube / Vimeo) ───────────────────────── */
 .video-embed {
   position: relative;
