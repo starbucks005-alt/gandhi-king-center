@@ -72,6 +72,19 @@
   to = "/press.html"
   status = 200
 
+# Staff index page + individual native staff profiles. Borrowed pro-bono
+# agents are listed on the index with attribution back to their home
+# properties; they do not get full pages on the GK site.
+[[redirects]]
+  from = "/staff"
+  to = "/staff.html"
+  status = 200
+
+[[redirects]]
+  from = "/staff/:slug"
+  to = "/staff/:slug.html"
+  status = 200
+
 [[redirects]]
   from = "/peace-partners"
   to = "/peace-partners.html"
