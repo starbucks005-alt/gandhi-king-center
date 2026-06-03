@@ -51,6 +51,14 @@
   to = "/the-kings-in-india.html"
   status = 200
 
+# Unlinked from primary nav: surprise tribute to Carolyn and Gregory Foster.
+# Page is reachable at the URL but not advertised. Add to nav blocks across
+# pages after the in-person reveal.
+[[redirects]]
+  from = "/scott-before-king"
+  to = "/scott-before-king.html"
+  status = 200
+
 [[redirects]]
   from = "/peace-partners"
   to = "/peace-partners.html"
