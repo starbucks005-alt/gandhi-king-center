@@ -165,7 +165,7 @@
         .then(function(data) {
           var items = (data && data.dispatches) || [];
           if (!items.length) {
-            listEl.innerHTML = '<p class="pn-empty">Sneha has not filed her first dispatch yet. Check back soon &mdash; the desk is just spinning up.</p>';
+            listEl.innerHTML = '<p class="pn-empty">Sneha has not filed her first dispatch yet. Check back soon. The desk is just spinning up.</p>';
             return;
           }
           listEl.innerHTML = items.map(function(d) {
