@@ -12,7 +12,7 @@
 const { getStore, connectLambda } = require('@netlify/blobs');
 const { STORE_PIECES, esc } = require('./_peace-news-helpers');
 
-const SITE = 'https://www.gandhi-king-center-for-nonviolence.org';
+const SITE = 'https://gandhi-king.netlify.app';
 const VALID_SLUG = /^[a-z0-9][a-z0-9-]{0,79}$/;
 
 function formatDate(iso) {
