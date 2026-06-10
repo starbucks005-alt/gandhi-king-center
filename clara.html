@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clara Sediqa &middot; 21st Century Girls &middot; Gandhi-King Center</title>
+  <meta name="description" content="Clara Sediqa is eighteen, from Herat, and one of the 21st Century Girls, learning robotics and Python in a country that banned her from school. Talk with her about the Afghanistan the world forgets, and about what she is learning.">
+  <link rel="canonical" href="https://gandhi-king.netlify.app/clara">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    /* ── Clara: scoped page styles (same per-page pattern the partner page uses) ── */
+    .clara-hero {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 34px;
+      align-items: center;
+    }
+    .clara-portrait {
+      position: relative;
+      width: 280px;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #dfe7ef;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+      animation: clara-float 6s ease-in-out infinite;
+    }
+    .clara-portrait img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .clara-portrait__closed { opacity: 0; animation: clara-blink 6.2s steps(1, end) infinite; }
+    .clara-portrait.is-speaking { box-shadow: 0 0 0 4px rgba(193, 154, 58, 0.45), 0 14px 40px rgba(0, 0, 0, 0.22); animation: clara-float 6s ease-in-out infinite, clara-glow 1.1s ease-in-out infinite; }
+    @keyframes clara-blink { 0%, 94%, 100% { opacity: 0; } 96% { opacity: 1; } }
+    @keyframes clara-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    @keyframes clara-glow { 0%, 100% { box-shadow: 0 0 0 3px rgba(193,154,58,0.40), 0 14px 40px rgba(0,0,0,0.2); } 50% { box-shadow: 0 0 0 7px rgba(193,154,58,0.55), 0 16px 46px rgba(0,0,0,0.28); } }
+
+    /* ── Chat ── */
+    .clara-chat { background: #fff; border: 1px solid var(--rule-soft); border-radius: 12px; padding: 18px; max-width: 760px; margin-top: 8px; }
+    .clara-log { display: flex; flex-direction: column; gap: 12px; min-height: 120px; max-height: 460px; overflow-y: auto; padding: 6px 4px 10px; }
+    .clara-bubble { padding: 12px 16px; border-radius: 14px; max-width: 86%; font-family: 'Crimson Pro', serif; font-size: 1.05rem; line-height: 1.55; }
+    .clara-bubble--her { background: var(--bg-soft); color: var(--ink); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .clara-bubble--you { background: var(--gold-deep, #9a7a1f); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .clara-bubble--typing { color: var(--ink-muted); font-style: italic; }
+    .clara-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 14px; }
+    .clara-chip { background: none; border: 1px solid var(--rule-soft); color: var(--gold-deep, #9a7a1f); border-radius: 999px; padding: 7px 14px; font-family: 'Inter', sans-serif; font-size: 0.85rem; cursor: pointer; }
+    .clara-chip:hover { background: var(--bg-soft); }
+    .clara-composer { display: flex; gap: 10px; align-items: flex-end; }
+    .clara-composer textarea { flex: 1; resize: none; border: 1px solid var(--rule-soft); border-radius: 10px; padding: 11px 14px; font-family: 'Inter', sans-serif; font-size: 1rem; line-height: 1.4; color: var(--ink); min-height: 48px; max-height: 140px; outline: none; background: #fff; }
+    .clara-composer textarea:focus { border-color: var(--gold, #c19a3a); }
+    .clara-send { background: var(--gold-deep, #9a7a1f); color: #fff; border: none; border-radius: 10px; padding: 0 20px; height: 48px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem; cursor: pointer; }
+    .clara-send:disabled { opacity: 0.5; cursor: not-allowed; }
+    .clara-voicenote { font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--ink-muted); margin-top: 10px; }
+    .clara-disclosure { font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--ink-muted); font-style: italic; max-width: 760px; margin-top: 18px; }
+
+    @media (max-width: 720px) {
+      .clara-hero { grid-template-columns: 1fr; }
+      .clara-portrait { width: 100%; max-width: 340px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="/">
+        <span class="site-logo__mark">Gandhi-King Center</span>
+        <span class="site-logo__tag">For Nonviolence</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/season">Season</a>
+        <a href="/education">Education</a>
+        <a href="/advocacy">Advocacy</a>
+        <a href="/community-building">Community</a>
+        <a href="/outreach">Outreach</a>
+        <a href="/partners" class="is-active">Partners</a>
+        <a href="/archive">Archive</a>
+        <a href="/peace-news">Peace News</a>
+        <a href="/staff">Team</a>
+        <a href="/board">Board</a>
+        <a href="/get-involved">Join</a>
+        <a href="/packages">Packages</a>
+        <a href="/donate" class="nav-donate">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="clara-hero">
+        <div class="clara-portrait" id="claraPortrait" aria-label="Clara Sediqa">
+          <img src="/assets/images/clara-sediqa-eyes-open.jpg" alt="Clara Sediqa, eighteen, smiling on a pier by the sea">
+          <img class="clara-portrait__closed" src="/assets/images/clara-sediqa-eyes-closed.jpg" alt="" aria-hidden="true">
+        </div>
+        <div>
+          <p class="eyebrow"><a href="/partners/21st-century-girls">21st Century Girls</a> &middot; Herat, Afghanistan</p>
+          <h1 class="hero__title" style="margin-bottom:8px;">Clara Sediqa.</h1>
+          <p class="hero__sub">I am eighteen, from Herat, and one of the 21st Century Girls. They told girls my age we could not learn. I kept learning anyway, robotics and Python, in the corner of our one room. Come, walk with me. I will show you the Afghanistan the world forgets, and tell you what I am building.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--read">
+
+      <div class="clara-chat">
+        <div class="clara-log" id="claraLog" aria-live="polite">
+          <div class="clara-bubble clara-bubble--her">Salaam, my friend. I am Clara. Sit, the tea is always on at our house. Ask me anything: about my country and its real beauty, about my family and how I study, or about what I am learning this week. Where shall we begin?</div>
+        </div>
+
+        <div class="clara-chips" id="claraChips">
+          <button class="clara-chip">Show me the real Afghanistan</button>
+          <button class="clara-chip">What are you learning right now?</button>
+          <button class="clara-chip">Tell me about your family</button>
+          <button class="clara-chip">How do you study at home?</button>
+          <button class="clara-chip">What do you dream about?</button>
+        </div>
+
+        <div class="clara-composer">
+          <textarea id="claraInput" rows="1" placeholder="Ask Clara something..." aria-label="Your message to Clara"></textarea>
+          <button class="clara-send" id="claraSend">Send</button>
+        </div>
+        <p class="clara-voicenote" id="claraVoiceNote">Clara speaks her answers aloud. Turn your sound on.</p>
+      </div>
+
+      <p class="clara-disclosure">Clara is a storyteller created for the 21st Century Girls program. Her voice and her story are drawn from the lives of the girls in the program: girls who were told they could not learn, learning anyway. <a href="/partners/21st-century-girls">Read about the program &rarr;</a></p>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <h4>Gandhi-King Center for Nonviolence</h4>
+          <p>A 501(c)(3) private foundation carrying forward the philosophies and lives of Mahatma Gandhi and Dr. Martin Luther King Jr.</p>
+          <p>EIN 99-3986935</p>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <ul>
+            <li><a href="/season">The Season</a></li>
+            <li><a href="/board">The Board</a></li>
+            <li><a href="/staff">The Team</a></li>
+            <li><a href="/archive">The Archive</a></li>
+            <li><a href="/partners">Partners</a></li>
+            <li><a href="/education">Education</a></li>
+            <li><a href="/advocacy">Advocacy</a></li>
+            <li><a href="/community-building">Community Building</a></li>
+            <li><a href="/outreach">Outreach</a></li>
+            <li><a href="/packages">Packages</a></li>
+            <li><a href="/donate">Donate</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>Admin@gandhi-king-center-for-nonviolence.org</p>
+          <p>109 North Main Street, Suite 1206<br>Dayton, OH 45402-1294</p>
+          <p style="margin-top:14px;"><a href="/contact">Contact form &rarr;</a></p>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <span>&copy; <span id="year">2026</span> Gandhi-King Center for Nonviolence. All rights reserved.</span>
+        <span><a href="/privacy">Privacy Policy</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function () {
+      var CHAT_URL  = '/.netlify/functions/gk-clara';
+      var VOICE_URL = '/.netlify/functions/gk-clara-voice';
+
+      var logEl   = document.getElementById('claraLog');
+      var inputEl = document.getElementById('claraInput');
+      var sendEl  = document.getElementById('claraSend');
+      var portrait = document.getElementById('claraPortrait');
+      var history = [];
+      var busy = false;
+      var audio = null;
+
+      function bubble(role, text) {
+        var d = document.createElement('div');
+        d.className = 'clara-bubble ' + (role === 'you' ? 'clara-bubble--you' : 'clara-bubble--her');
+        d.textContent = text;
+        logEl.appendChild(d);
+        logEl.scrollTop = logEl.scrollHeight;
+        return d;
+      }
+
+      function autogrow() {
+        inputEl.style.height = 'auto';
+        inputEl.style.height = Math.min(inputEl.scrollHeight, 140) + 'px';
+      }
+      inputEl.addEventListener('input', autogrow);
+      inputEl.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+      });
+
+      document.getElementById('claraChips').addEventListener('click', function (e) {
+        var btn = e.target.closest('.clara-chip');
+        if (!btn) return;
+        inputEl.value = btn.textContent;
+        send();
+      });
+      sendEl.addEventListener('click', send);
+
+      function speak(text) {
+        fetch(VOICE_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: String(text).slice(0, 1500) })
+        }).then(function (res) {
+          if (!res.ok) return null;
+          return res.blob();
+        }).then(function (blob) {
+          if (!blob) return;
+          if (audio) { try { audio.pause(); } catch (_) {} }
+          audio = new Audio(URL.createObjectURL(blob));
+          portrait.classList.add('is-speaking');
+          audio.onended = function () { portrait.classList.remove('is-speaking'); };
+          audio.onerror = function () { portrait.classList.remove('is-speaking'); };
+          audio.play().catch(function () { portrait.classList.remove('is-speaking'); });
+        }).catch(function () { portrait.classList.remove('is-speaking'); });
+      }
+
+      function send() {
+        if (busy) return;
+        var msg = inputEl.value.trim();
+        if (!msg) return;
+        busy = true; sendEl.disabled = true;
+        inputEl.value = ''; autogrow();
+
+        bubble('you', msg);
+        history.push({ role: 'user', body: msg });
+
+        var typing = document.createElement('div');
+        typing.className = 'clara-bubble clara-bubble--her clara-bubble--typing';
+        typing.textContent = 'Clara is thinking...';
+        logEl.appendChild(typing);
+        logEl.scrollTop = logEl.scrollHeight;
+
+        fetch(CHAT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg, history: history.slice(0, -1) })
+        }).then(function (res) {
+          return res.json().catch(function () { return {}; });
+        }).then(function (data) {
+          typing.remove();
+          if (!data || !data.body) {
+            bubble('her', 'Forgive me, my friend, I lost my voice for a moment. Please ask me again.');
+          } else {
+            bubble('her', data.body);
+            history.push({ role: 'clara', body: data.body });
+            speak(data.body);
+          }
+        }).catch(function () {
+          typing.remove();
+          bubble('her', 'Forgive me, the connection slipped away. Try once more?');
+        }).then(function () {
+          busy = false; sendEl.disabled = false; inputEl.focus();
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
