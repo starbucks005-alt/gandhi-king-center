@@ -193,6 +193,11 @@
   to = "/season-for-nonviolence.html"
   status = 200
 
+# Clara Sediqa, storyteller for the 21st Century Girls program.
+[[redirects]]
+  from = "/clara"
+  to = "/clara.html"
+  status = 200
 # Catch unknown URLs into the 404 page (keeps the chrome consistent).
 [[redirects]]
   from = "/*"
