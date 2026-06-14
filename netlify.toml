@@ -5,6 +5,11 @@
 [functions]
   node_bundler = "esbuild"
 
+# Clara's backpack makes external API calls (Wikipedia, Met Museum, Nominatim,
+# Internet Archive) plus an agentic Claude loop — needs more than the 10s default.
+  [functions.gk-clara]
+    timeout = 30
+
 # Sneha's Peace News writer needs a longer timeout for Anthropic + web_search.
 # Background function (-background suffix) gets up to 15 min automatically.
   [functions.peace-news-write-background]
