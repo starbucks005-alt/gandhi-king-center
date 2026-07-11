@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gandhi-king-center-for-nonviolence.org/sitemap.xml
