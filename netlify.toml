@@ -21,6 +21,16 @@
   [functions.peace-news-piece]
     timeout = 10
 
+# Board-family consent-preview agents (Joel, Gregory, Carolyn) — private, unlisted,
+# built 2026-08-22. Single Anthropic call, no external tool loop, but give it
+# headroom above the 10s default.
+  [functions.gk-joel-king]
+    timeout = 20
+  [functions.gk-gregory-foster]
+    timeout = 20
+  [functions.gk-carolyn-foster]
+    timeout = 20
+
 # Pretty URLs: /board instead of /board.html
 [[redirects]]
   from = "/board"
@@ -79,6 +89,24 @@
 [[redirects]]
   from = "/patron"
   to = "/patron.html"
+  status = 200
+
+# Private, unlisted board-family consent-preview agents (2026-08-22). Not linked
+# in nav, noindexed on the page itself — direct link only, for Joel/Gregory/
+# Carolyn's own review before any public launch decision.
+[[redirects]]
+  from = "/preview/joel-king"
+  to = "/joel-king-preview.html"
+  status = 200
+
+[[redirects]]
+  from = "/preview/gregory-foster"
+  to = "/gregory-foster-preview.html"
+  status = 200
+
+[[redirects]]
+  from = "/preview/carolyn-foster"
+  to = "/carolyn-foster-preview.html"
   status = 200
 
 # Press coverage of the center, beginning with Wright State Newsroom's

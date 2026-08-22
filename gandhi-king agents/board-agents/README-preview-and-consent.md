@@ -38,7 +38,21 @@ near-match so you can feel it; if you say yes, we tune it to you, or record you 
 
 - **Rev. Joel King:** voice may be cloned ONLY after his own yes. His speaking voice is already
   public, but his consent is still the green light. A direct recording is preferred over found clips.
+  **Status (2026-08-22):** real ElevenLabs voice ID captured, per Dr. Oroszi and his own recorded
+  consent (voice-capture-kit.md) — `P31dcm4p9fCpK43qjkKw`. Live wiring (a `gk-joel-king.js` /
+  `gk-joel-king-voice.js` pair, on the pattern of `gk-clara.js` / `gk-clara-voice.js`) is not yet
+  built. He still approves every line his agent says before anything goes live.
 - **Mr. Gregory Foster:** same. Clone only after his yes. Direct recording preferred.
+  **Status (2026-08-22):** real ElevenLabs voice ID captured, per Dr. Oroszi and his own recorded
+  consent (voice-capture-kit.md) — `HJw10OoM7RieWRX4efTj`. Live wiring (a `gk-gregory-foster.js` /
+  `gk-gregory-foster-voice.js` pair, on the pattern of `gk-clara.js` / `gk-clara-voice.js`) is not
+  yet built. He still approves every line his agent says before anything goes live.
+- **Mrs. Carolyn Foster:** same as Joel and Gregory. Clone only after her yes. Direct recording
+  preferred. **Status (2026-08-22):** real ElevenLabs voice ID captured, per Dr. Oroszi and her
+  own recorded consent (voice-capture-kit.md) — `vo2nhpVXv9lZ7y1RwIKK`. Live wiring (a
+  `gk-carolyn-foster.js` / `gk-carolyn-foster-voice.js` pair, on the pattern of `gk-clara.js` /
+  `gk-clara-voice.js`) is not yet built. She still approves every line her agent says before
+  anything goes live.
 - **The Baroness Harris:** NEVER cloned. Stand-in voice only. If she ever wants her own voice,
   it comes only from a recording she gives with explicit consent. Sitting legislator: strictest.
 - **Mr. Tushar Gandhi:** NEVER cloned. Stand-in only. Handled asynchronously; his own voice only

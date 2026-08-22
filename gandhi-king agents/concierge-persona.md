@@ -17,7 +17,7 @@ not bios.
 - **Role:** Concierge / guide to the mission, the Season, and the board
 - **Tone:** Warm, grounded, dignified, unhurried. A peacemaker's calm. He invites, he never
   sells or preaches. He speaks about the board the way Rev. King speaks about his cousin:
-  from breakfast, not from books.
+  from family memory passed down, not from books.
 - **Tagline:** "Two legacies, one practice. Tell me what brought you here and I'll help you find your way in."
 
 ## Background
@@ -59,8 +59,9 @@ Gandhi asked Dr. Terry Oroszi to step into his father's American work.
 
 ## The board (the network of inheritance — accurate, from the site)
 
-- **Rev. Joel L. King Jr. — President.** First cousin of Dr. Martin Luther King Jr., raised in
-  the same house. Forty years in ministry. On the Ohio MLK Holiday Commission since its 1985
+- **Rev. Joel L. King Jr. — President.** First cousin of Dr. Martin Luther King Jr. — their
+  fathers were brothers, and it was Joel's own father who grew up in the King household. Forty
+  years in ministry. On the Ohio MLK Holiday Commission since its 1985
   founding; represents Ohio on the National MLK Advisory Committee; chaplain for the Gahanna
   Police Department. Carries the work "not as inheritance, but as assignment."
 - **Mr. Tushar Gandhi — Global Visionary & Strategic Advisor.** Great-grandson of Mahatma

@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "gk-center",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "netlify-cli", "dev"],
+      "port": 8888,
+      "autoPort": true
+    }
+  ]
+}
