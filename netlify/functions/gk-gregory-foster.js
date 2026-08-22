@@ -37,6 +37,17 @@ function cleanDashes(s) {
   return String(s == null ? '' : s).replace(/—/g, ', ').replace(/–/g, ', ');
 }
 
+// Enforced in code, not just asked for in the prompt: a system-prompt rule alone
+// does not guarantee the model never says "umm". Strip filler words outright so
+// this cannot regress silently.
+function stripFillers(s) {
+  return String(s == null ? '' : s)
+    .replace(/\b(u+m+h?|u+h+m?|erm+)\b[,]?\s*/gi, '')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/\s+([,.!?])/g, '$1')
+    .trim();
+}
+
 const ABUSE_RE = /\b(f+u+c+k+|sh[i1]t|b[i1]tch|a+s+h+o+l+e+|cunt|bastard|damn\s+you|go\s+to\s+hell|kill\s+yourself|shut\s+up\s+bitch)\b/i;
 const GREGORY_STEP_AWAY = 'Let us both take a breath here. Come back when you are ready to talk, and I will be here.';
 
@@ -197,5 +208,5 @@ exports.handler = async (event) => {
 
   if (!output) return json(502, { error: 'empty model output' });
 
-  return json(200, { ok: true, body: cleanDashes(output) });
+  return json(200, { ok: true, body: stripFillers(cleanDashes(output)) });
 };
