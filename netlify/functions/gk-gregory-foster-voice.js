@@ -8,11 +8,21 @@
    different voice. Text is capped so this cannot be abused as a general
    TTS proxy.
 
+   Repeated identical text (a canned line like the graceful-disengagement message,
+   or any answer that happens to repeat) is cached in Netlify Blobs keyed by a
+   hash of the exact text. First time: one ElevenLabs call. Every time after:
+   served from the cache, free. Per Dr. Oroszi: canned responses should only
+   cost once.
+
    Env: ELEVENLABS_API_KEY  (already set on the GK Netlify site)
    ───────────────────────────────────────────────────────────────────────────── */
 
+const crypto = require('crypto');
+const { getStore, connectLambda } = require('@netlify/blobs');
+
 const VOICE_ID = 'HJw10OoM7RieWRX4efTj';
 const MODEL_ID = 'eleven_multilingual_v2';
+const CACHE_STORE = 'gk-voice-cache-gregory-foster';
 
 const VOICE_SETTINGS = {
   stability: 0.45,
@@ -28,6 +38,21 @@ const CORS = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
 };
+
+function audioResponse(buf, cacheStatus) {
+  return {
+    statusCode: 200,
+    headers: {
+      'Content-Type': 'audio/mpeg',
+      'Content-Length': String(buf.length),
+      'Cache-Control': 'no-store',
+      'Access-Control-Allow-Origin': '*',
+      'X-Voice-Cache': cacheStatus,
+    },
+    body: buf.toString('base64'),
+    isBase64Encoded: true,
+  };
+}
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return { statusCode: 204, headers: CORS, body: '' };
@@ -45,6 +70,18 @@ exports.handler = async (event) => {
   if (text.length > TEXT_CAP) text = text.slice(0, TEXT_CAP);
 
   text = '. ' + text;
+
+  try { connectLambda(event); } catch (_) {}
+  const cacheKey = crypto.createHash('sha256').update(text).digest('hex');
+  const store = getStore(CACHE_STORE);
+
+  try {
+    const cached = await store.get(cacheKey, { type: 'arrayBuffer' });
+    if (cached) return audioResponse(Buffer.from(cached), 'hit');
+  } catch (err) {
+    console.error('[gk-gregory-foster-voice] cache read failed', err && err.message);
+    // Fall through to a live call — a cache miss must never break the voice.
+  }
 
   let resp;
   try {
@@ -69,17 +106,15 @@ exports.handler = async (event) => {
   }
 
   const buf = Buffer.from(await resp.arrayBuffer());
-  return {
-    statusCode: 200,
-    headers: {
-      'Content-Type': 'audio/mpeg',
-      'Content-Length': String(buf.length),
-      'Cache-Control': 'no-store',
-      'Access-Control-Allow-Origin': '*',
-    },
-    body: buf.toString('base64'),
-    isBase64Encoded: true,
-  };
+
+  try {
+    await store.set(cacheKey, buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength));
+  } catch (err) {
+    console.error('[gk-gregory-foster-voice] cache write failed', err && err.message);
+    // Non-fatal — the visitor still gets their audio, it just won't be cached.
+  }
+
+  return audioResponse(buf, 'miss');
 };
 
 function jsonError(statusCode, message) {
