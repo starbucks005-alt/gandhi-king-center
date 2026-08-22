@@ -14,10 +14,16 @@
 const VOICE_ID = 'vo2nhpVXv9lZ7y1RwIKK';
 const MODEL_ID = 'eleven_multilingual_v2';
 
+// Tuned down from the shared default (stability 0.45, style 0.30) on 2026-08-22
+// after Dr. Oroszi reported this specific voice sounding tinny/echoey — higher
+// style exaggeration is a known source of metallic artifacts in ElevenLabs, and
+// this voice reacts to it more than Joel's or Gregory's. More stable, less
+// exaggerated settings trade a bit of expressiveness for a cleaner, less
+// robotic sound.
 const VOICE_SETTINGS = {
-  stability: 0.45,
-  similarity_boost: 0.85,
-  style: 0.30,
+  stability: 0.62,
+  similarity_boost: 0.75,
+  style: 0.08,
   use_speaker_boost: true,
 };
 
