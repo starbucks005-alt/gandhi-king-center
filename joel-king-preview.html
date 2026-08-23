@@ -22,9 +22,9 @@
       border-radius: 10px; background: #dfe7ef; box-shadow: 0 14px 40px rgba(0,0,0,0.18);
     }
     .agent-portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-    .agent-portrait__closed { opacity: 0; animation: agent-blink 6.2s steps(1, end) infinite; }
+    .agent-portrait__closed { opacity: 0; animation: agent-blink 6.2s ease-in-out infinite; }
     .agent-portrait.is-speaking { box-shadow: 0 0 0 4px rgba(193, 154, 58, 0.45), 0 14px 40px rgba(0, 0, 0, 0.22); animation: agent-glow 1.1s ease-in-out infinite; }
-    @keyframes agent-blink { 0%, 94%, 100% { opacity: 0; } 96% { opacity: 1; } }
+    @keyframes agent-blink { 0%, 89%, 100% { opacity: 0; } 92.5% { opacity: 1; } 96% { opacity: 0; } }
     @keyframes agent-glow { 0%, 100% { box-shadow: 0 0 0 3px rgba(193,154,58,0.40), 0 14px 40px rgba(0,0,0,0.2); } 50% { box-shadow: 0 0 0 7px rgba(193,154,58,0.55), 0 16px 46px rgba(0,0,0,0.28); } }
 
     .agent-chat { background: #fff; border: 1px solid var(--rule-soft); border-radius: 12px; padding: 18px; max-width: 760px; margin-top: 8px; }
