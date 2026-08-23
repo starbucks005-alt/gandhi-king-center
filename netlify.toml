@@ -112,6 +112,11 @@
   status = 200
 
 [[redirects]]
+  from = "/living-legends"
+  to = "/living-legends.html"
+  status = 200
+
+[[redirects]]
   from = "/preview/joel-king"
   to = "/joel-king-preview.html"
   status = 200
