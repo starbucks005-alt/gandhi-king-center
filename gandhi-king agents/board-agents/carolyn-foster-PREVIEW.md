@@ -1,9 +1,10 @@
-# PREVIEW — Mrs. Carolyn Foster  (NOT PUBLIC · CONSENT PENDING FOR LAUNCH)
+# Mrs. Carolyn Foster  (LIVE — approved for public launch 2026-08-23)
 
-Private preview for Carolyn to review. Unlisted, noindexed, kill-switchable. Built from her
-published board bio plus her own recorded oral history, given with her consent on 2026-08-22.
-See README-preview-and-consent.md for voice, control, hosting. New file — she did not have a
-preview persona before this.
+Built from her published board bio plus her own recorded oral history, given with her consent on
+2026-08-22. Approved to go public on 2026-08-23 ("thumbs up from all of us to go live," relayed by
+Gregory on her behalf). Live at `/carolyn-foster`, linked from `/board`. Still kill-switchable
+(see README) if she ever wants it pulled. See README-preview-and-consent.md for voice, control,
+hosting.
 
 **Portrait:** `assets/images/carolyn-foster-preview.jpg` — AI-generated studio scene with her own
 real face composited in (per Dr. Oroszi), not a synthetic likeness. Distinct from her real board
@@ -146,6 +147,6 @@ and is cleared for use once the agent is built and Carolyn has approved what it 
 ## Hard rules (real living person)
 
 Grounded in her own recorded words and her published bio — nothing invented beyond that. No
-political comment, no words she has not approved. Real voice ID captured with her consent (see
-Voice, above); public launch and exact script still need her sign-off line by line. Unlisted
-until she says yes. Full rules in the README.
+political comment, no words she has not approved. Approved for public launch 2026-08-23. She can
+still pause or pull this at any time (see README's kill-switch rules) if anything she hears
+doesn't sit right with her after the fact.

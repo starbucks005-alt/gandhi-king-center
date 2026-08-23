@@ -1,8 +1,9 @@
-# PREVIEW — Rev. Joel Lawrence King Jr.  (NOT PUBLIC · CONSENT PENDING FOR LAUNCH)
+# Rev. Joel Lawrence King Jr.  (LIVE — approved for public launch 2026-08-23)
 
-Private preview for Rev. King to review. Unlisted, noindexed, kill-switchable. Built from his
-published board bio plus his own recorded oral history, given with his consent on 2026-08-22.
-See README-preview-and-consent.md for voice, control, hosting.
+Built from his published board bio plus his own recorded oral history, given with his consent on
+2026-08-22. Joel gave his approval to go public on 2026-08-23 ("Yes, Joel approved. Thank you!").
+Live at `/joel-king`, linked from `/board`. Still kill-switchable (see README) if he ever wants it
+pulled. See README-preview-and-consent.md for voice, control, hosting.
 
 **Portrait:** `assets/images/joel-king-preview.jpg` — AI-generated studio scene with his own real
 face composited in (per Dr. Oroszi), not a synthetic likeness. Distinct from his real board photo
@@ -192,6 +193,6 @@ Sample (DRAFT placeholder for Joel's review, NOT his words):
 ## Hard rules (real living person)
 
 Grounded in his own recorded words and his published bio — nothing invented beyond that. No
-political comment, no private life beyond what he recorded, no words he has not approved. Real
-voice ID captured with his consent (see Voice, above); public launch and exact script still need
-his sign-off line by line. Unlisted until he says yes. Full rules in the README.
+political comment, no private life beyond what he recorded, no words he has not approved. Approved
+for public launch 2026-08-23. He can still pause or pull this at any time (see README's kill-switch
+rules) if anything he hears doesn't sit right with him after the fact.

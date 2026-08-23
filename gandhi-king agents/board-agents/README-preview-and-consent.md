@@ -1,8 +1,16 @@
 # Board-member agent previews — approach, consent, and control
 
-Private previews so Rev. Joel King and Gregory Foster can SEE and HEAR what "being an AI
-agent" would mean before they decide. Nothing here is public. Nothing goes live without
-their explicit yes.
+Private previews so Rev. Joel King, Gregory Foster, and Carolyn Foster could SEE and HEAR what
+"being an AI agent" would mean before they decided. **Update, 2026-08-23: all three gave their
+explicit yes.** Joel's own message: "Yes, Joel approved. Thank you!" Gregory's, for all three:
+"You have the thumbs up from all of us to go live." Their three agents are now live and public at
+`/joel-king`, `/gregory-foster`, and `/carolyn-foster`, linked from `/board`. The consent process
+below is preserved as-written since it is exactly what earned that yes, and it still governs
+anything that changes about their agents going forward (a script change, a new voice recording,
+etc. still needs their sign-off, same as the first launch did). Baroness Harris and Tushar Gandhi
+have not been asked yet and remain unlisted/preview-only. Per Dr. Oroszi's original sequencing,
+that ask was always meant to come after Joel/Gregory/Carolyn's own launch, which has now
+happened — see `project-king-family-agents` memory for the full plan.
 
 ## The idea (consent-forward)
 
@@ -36,23 +44,18 @@ near-match so you can feel it; if you say yes, we tune it to you, or record you 
 
 ### Voice policy, per person (Dr. Oroszi's line — do not cross)
 
-- **Rev. Joel King:** voice may be cloned ONLY after his own yes. His speaking voice is already
-  public, but his consent is still the green light. A direct recording is preferred over found clips.
-  **Status (2026-08-22):** real ElevenLabs voice ID captured, per Dr. Oroszi and his own recorded
-  consent (voice-capture-kit.md) — `P31dcm4p9fCpK43qjkKw`. Live wiring (a `gk-joel-king.js` /
-  `gk-joel-king-voice.js` pair, on the pattern of `gk-clara.js` / `gk-clara-voice.js`) is not yet
-  built. He still approves every line his agent says before anything goes live.
-- **Mr. Gregory Foster:** same. Clone only after his yes. Direct recording preferred.
-  **Status (2026-08-22):** real ElevenLabs voice ID captured, per Dr. Oroszi and his own recorded
-  consent (voice-capture-kit.md) — `HJw10OoM7RieWRX4efTj`. Live wiring (a `gk-gregory-foster.js` /
-  `gk-gregory-foster-voice.js` pair, on the pattern of `gk-clara.js` / `gk-clara-voice.js`) is not
-  yet built. He still approves every line his agent says before anything goes live.
-- **Mrs. Carolyn Foster:** same as Joel and Gregory. Clone only after her yes. Direct recording
-  preferred. **Status (2026-08-22):** real ElevenLabs voice ID captured, per Dr. Oroszi and her
-  own recorded consent (voice-capture-kit.md) — `vo2nhpVXv9lZ7y1RwIKK`. Live wiring (a
-  `gk-carolyn-foster.js` / `gk-carolyn-foster-voice.js` pair, on the pattern of `gk-clara.js` /
-  `gk-clara-voice.js`) is not yet built. She still approves every line her agent says before
-  anything goes live.
+- **Rev. Joel King:** voice may be cloned ONLY after his own yes. **Status:** real ElevenLabs
+  voice ID `P31dcm4p9fCpK43qjkKw` captured 2026-08-22 with his recorded consent
+  (voice-capture-kit.md); `gk-joel-king.js` / `gk-joel-king-voice.js` built and live since
+  2026-08-23, after his explicit approval to launch.
+- **Mr. Gregory Foster:** same. **Status:** real ElevenLabs voice ID `HJw10OoM7RieWRX4efTj`
+  captured 2026-08-22 with his recorded consent; `gk-gregory-foster.js` /
+  `gk-gregory-foster-voice.js` built and live since 2026-08-23, after his explicit approval to
+  launch.
+- **Mrs. Carolyn Foster:** same. **Status:** real ElevenLabs voice ID `vo2nhpVXv9lZ7y1RwIKK`
+  captured 2026-08-22 with her recorded consent; `gk-carolyn-foster.js` /
+  `gk-carolyn-foster-voice.js` built and live since 2026-08-23, after her explicit approval to
+  launch.
 - **The Baroness Harris:** NEVER cloned. Stand-in voice only. If she ever wants her own voice,
   it comes only from a recording she gives with explicit consent. Sitting legislator: strictest.
 - **Mr. Tushar Gandhi:** NEVER cloned. Stand-in only. Handled asynchronously; his own voice only
@@ -65,14 +68,22 @@ permission. The person's yes is.
 
 - **Approval:** they approve every line their agent can say. Nothing ships unapproved.
 - **No politics, no invented words:** the agent only states published facts and their own quotes.
-- **Their voice, their choice:** stand-in until they approve or record their own.
+- **Their voice, their choice:** cloned only after their own recorded consent (Joel, Gregory,
+  Carolyn all gave it — see voice-capture-kit.md).
 - **Pause or pull, anytime:** one word from them and the agent goes dark, permanently if they wish.
-- **Private until yes:** the preview is unlisted; the public never sees it without consent.
+  This still applies now that they are live, not just during the preview stage.
+- **Public since their yes:** Joel, Gregory, and Carolyn's agents went public 2026-08-23, after
+  each gave explicit approval. Baroness Harris and Tushar Gandhi's would-be agents stay unlisted
+  until the same standard is met for them.
 
-## For Code (hosting the preview)
+## For Code (hosting these agents)
 
-- Publish each preview page UNLISTED and noindexed (robots noindex, not linked in nav, not in
-  the sitemap). A direct link only, to share in the meeting.
+- Joel/Gregory/Carolyn: public pages (`/joel-king`, `/gregory-foster`, `/carolyn-foster`), linked
+  from `/board`, indexed normally. Any future board-member agent starts UNLISTED and noindexed
+  (robots noindex, not linked in nav) until that person gives the same explicit yes — a direct
+  link only, to share for their own review first.
 - Wire the concierge from the PREVIEW persona file, with the hard rules above as system limits.
-- Use the stand-in TTS voice; keep a clear on-screen "Preview — not yet approved" label.
-- Easy kill switch: a single flag that disables the page.
+- Real cloned voice only after the person's own recorded consent; a stand-in voice, clearly
+  labeled, until then.
+- Easy kill switch: a single flag (`ENABLED` at the top of each chat function) that disables the
+  agent instantly on redeploy.

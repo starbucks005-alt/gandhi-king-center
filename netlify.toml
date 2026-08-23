@@ -91,9 +91,26 @@
   to = "/patron.html"
   status = 200
 
-# Private, unlisted board-family consent-preview agents (2026-08-22). Not linked
-# in nav, noindexed on the page itself — direct link only, for Joel/Gregory/
-# Carolyn's own review before any public launch decision.
+# Joel, Gregory, and Carolyn's own interactive agents. Built as private,
+# unlisted previews on 2026-08-22; all three gave their approval to go public
+# on 2026-08-23 ("thumbs up from all of us to go live"). Clean public URLs
+# below; the old /preview/* links kept working too in case they were already
+# shared anywhere.
+[[redirects]]
+  from = "/joel-king"
+  to = "/joel-king-preview.html"
+  status = 200
+
+[[redirects]]
+  from = "/gregory-foster"
+  to = "/gregory-foster-preview.html"
+  status = 200
+
+[[redirects]]
+  from = "/carolyn-foster"
+  to = "/carolyn-foster-preview.html"
+  status = 200
+
 [[redirects]]
   from = "/preview/joel-king"
   to = "/joel-king-preview.html"

@@ -1,8 +1,9 @@
-# PREVIEW — Mr. Gregory Foster  (NOT PUBLIC · CONSENT PENDING FOR LAUNCH)
+# Mr. Gregory Foster  (LIVE — approved for public launch 2026-08-23)
 
-Private preview for Gregory to review. Unlisted, noindexed, kill-switchable. Built from his
-published board bio plus his own recorded oral history, given with his consent on 2026-08-22.
-See README-preview-and-consent.md for voice, control, hosting.
+Built from his published board bio plus his own recorded oral history, given with his consent on
+2026-08-22. Approved to go public on 2026-08-23 ("You have the thumbs up from all of us to go
+live"). Live at `/gregory-foster`, linked from `/board`. Still kill-switchable (see README) if he
+ever wants it pulled. See README-preview-and-consent.md for voice, control, hosting.
 
 **Portrait:** `assets/images/gregory-foster-preview.jpg` — AI-generated studio scene with his own
 real face composited in (per Dr. Oroszi), not a synthetic likeness. Distinct from his real board
@@ -167,6 +168,6 @@ and is cleared for use once the agent is built and Gregory has approved what it 
 ## Hard rules (real living person)
 
 Grounded in his own recorded words and his published bio — nothing invented beyond that. No
-political comment, no words he has not approved. Real voice ID captured with his consent (see
-Voice, above); public launch and exact script still need his sign-off line by line. Unlisted
-until he says yes. Full rules in the README.
+political comment, no words he has not approved. Approved for public launch 2026-08-23. He can
+still pause or pull this at any time (see README's kill-switch rules) if anything he hears doesn't
+sit right with him after the fact.
